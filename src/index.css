@@ -1,0 +1,125 @@
+/* ============================================================================
+   index.css — global styles & design tokens
+   Tailwind v4 uses CSS-first config: tokens are declared inside @theme and
+   Tailwind auto-generates utilities from them (e.g. bg-bg, text-cyan,
+   font-display). This keeps the whole visual system in one readable place.
+   ============================================================================ */
+@import "tailwindcss";
+
+@theme {
+  /* Core palette — premium dark, restrained accents */
+  --color-bg: #0b1120;
+  --color-surface: #111827;
+  --color-card: rgba(255, 255, 255, 0.06);
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --color-cyan: #06b6d4;
+  --color-purple: #8b5cf6;
+  --color-highlight: #38bdf8;
+
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
+
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 20px 60px -20px rgba(0, 0, 0, 0.5);
+  --shadow-glow-cyan: 0 0 40px -10px rgba(6, 182, 212, 0.35);
+  --shadow-glow-purple: 0 0 40px -10px rgba(139, 92, 246, 0.35);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-blob: blob 18s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-cyan);
+    color: var(--color-bg);
+  }
+
+  /* Slim custom scrollbar to match the premium aesthetic */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-cyan), var(--color-purple));
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  /* Reusable glass-card surface used across every section */
+  .glass-panel {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Gradient text used for emphasis words in headings */
+  .text-gradient {
+    background: linear-gradient(90deg, var(--color-cyan), var(--color-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .container-px {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-px {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.08); }
+  66% { transform: translate(-20px, 25px) scale(0.94); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
