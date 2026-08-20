@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FiArrowDown,
+  FiArrowRight,
   FiDownload,
   FiEye,
   FiCpu,
@@ -9,8 +10,23 @@ import {
   FiGlobe,
   FiCode,
   FiLayout,
+  FiBriefcase,
+  FiBookOpen,
+  FiAward,
+  FiCheckCircle,
 } from "react-icons/fi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiJavascript,
+  SiMongodb,
+  SiCplusplus,
+} from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
 import { personalInfo } from "../../data/resumeData";
 import useTypewriter from "../../hooks/useTypewriter";
@@ -24,20 +40,56 @@ const roles = [
   "UI/UX Designer",
 ];
 
+// Verified Role Chips with Icons
+const roleChips = [
+  { label: "Full-Stack Web Developer", icon: FiLayers, color: "text-cyan-300 border-cyan-500/30 bg-cyan-500/10" },
+  { label: "Embedded Systems Enthusiast", icon: FiCpu, color: "text-emerald-300 border-emerald-500/30 bg-emerald-500/10" },
+  { label: "Software Developer", icon: FiCode, color: "text-purple-300 border-purple-500/30 bg-purple-500/10" },
+  { label: "UI/UX Designer", icon: FiLayout, color: "text-pink-300 border-pink-500/30 bg-pink-500/10" },
+];
+
+// 4 Compact Information Cards (100% Real Portfolio Data)
+const infoCards = [
+  {
+    icon: FiBriefcase,
+    value: "2+ Major Projects",
+    label: "FarmDirect & Healthcare",
+    color: "text-cyan-400 border-cyan-500/25 bg-cyan-950/30",
+  },
+  {
+    icon: FiBookOpen,
+    value: "BE Degree (CSD)",
+    label: "Kongu Engg College '27",
+    color: "text-blue-400 border-blue-500/25 bg-blue-950/30",
+  },
+  {
+    icon: FiAward,
+    value: "4+ Credentials",
+    label: "NPTEL, Oracle & Courses",
+    color: "text-purple-400 border-purple-500/25 bg-purple-950/30",
+  },
+  {
+    icon: FiCheckCircle,
+    value: "Available Now",
+    label: "Open to Internships / Jobs",
+    color: "text-emerald-400 border-emerald-500/25 bg-emerald-950/30",
+  },
+];
+
 // 5 Verified Technical Skill Modules (Strictly NO AI/ML)
 const skillModules = [
   {
     id: "embedded",
     tag: "MOD // 01",
     title: "Embedded Systems",
-    subtitle: "Sensors & Hardware",
+    subtitle: "Sensors | IoT | Hardware",
     icon: FiCpu,
     color: "#00ff9d",
-    borderClass: "border-emerald-400/45 hover:border-emerald-300",
-    bgClass: "bg-[#060e18]/90 hover:bg-[#081524]",
+    borderClass: "border-emerald-400/50 hover:border-emerald-300",
+    bgClass: "bg-[#05111b]/92 hover:bg-[#081a29]",
     textClass: "text-emerald-300",
-    glowColor: "rgba(0, 255, 157, 0.4)",
-    desktopPos: "top-[2%] right-[6%] xl:right-[10%]",
+    glowColor: "rgba(0, 255, 157, 0.45)",
+    desktopPos: "top-[-1.25rem] right-[8%] xl:right-[12%]",
     path: "M 345 155 L 415 75",
     nodeCoord: { cx: 415, cy: 75 },
     floatAnimation: {
@@ -52,11 +104,11 @@ const skillModules = [
     subtitle: "Full-Stack Web",
     icon: FiLayers,
     color: "#00f0ff",
-    borderClass: "border-cyan-400/45 hover:border-cyan-300",
-    bgClass: "bg-[#040f1a]/90 hover:bg-[#071728]",
+    borderClass: "border-cyan-400/50 hover:border-cyan-300",
+    bgClass: "bg-[#041220]/92 hover:bg-[#071c32]",
     textClass: "text-cyan-300",
-    glowColor: "rgba(0, 240, 255, 0.4)",
-    desktopPos: "top-[44%] -left-[1.5rem] xl:-left-[2rem]",
+    glowColor: "rgba(0, 240, 255, 0.45)",
+    desktopPos: "top-[42%] -left-[2.25rem] xl:-left-[3rem]",
     path: "M 130 270 L 45 270",
     nodeCoord: { cx: 45, cy: 270 },
     floatAnimation: {
@@ -71,11 +123,11 @@ const skillModules = [
     subtitle: "Modern Web Apps",
     icon: FiGlobe,
     color: "#38bdf8",
-    borderClass: "border-sky-400/45 hover:border-sky-300",
-    bgClass: "bg-[#040e1c]/90 hover:bg-[#07162b]",
+    borderClass: "border-sky-400/50 hover:border-sky-300",
+    bgClass: "bg-[#041124]/92 hover:bg-[#071b38]",
     textClass: "text-sky-300",
-    glowColor: "rgba(56, 189, 248, 0.4)",
-    desktopPos: "top-[44%] -right-[1.5rem] xl:-right-[2rem]",
+    glowColor: "rgba(56, 189, 248, 0.45)",
+    desktopPos: "top-[42%] -right-[2.25rem] xl:-right-[3rem]",
     path: "M 410 270 L 495 270",
     nodeCoord: { cx: 495, cy: 270 },
     floatAnimation: {
@@ -86,15 +138,15 @@ const skillModules = [
   {
     id: "software",
     tag: "MOD // 04",
-    title: "Software Dev",
-    subtitle: "Clean Architecture",
+    title: "Software Development",
+    subtitle: "Clean & Scalable Code",
     icon: FiCode,
     color: "#a855f7",
-    borderClass: "border-purple-400/45 hover:border-purple-300",
-    bgClass: "bg-[#0a071c]/90 hover:bg-[#120c2e]",
+    borderClass: "border-purple-400/50 hover:border-purple-300",
+    bgClass: "bg-[#0c0822]/92 hover:bg-[#150d3c]",
     textClass: "text-purple-300",
-    glowColor: "rgba(168, 85, 247, 0.4)",
-    desktopPos: "bottom-[3%] left-[3%] xl:left-[6%]",
+    glowColor: "rgba(168, 85, 247, 0.45)",
+    desktopPos: "bottom-[2%] left-[2%] xl:left-[5%]",
     path: "M 185 385 L 95 455",
     nodeCoord: { cx: 95, cy: 455 },
     floatAnimation: {
@@ -109,11 +161,11 @@ const skillModules = [
     subtitle: "User-Centric UI",
     icon: FiLayout,
     color: "#ec4899",
-    borderClass: "border-pink-400/45 hover:border-pink-300",
-    bgClass: "bg-[#140615]/90 hover:bg-[#200a22]",
+    borderClass: "border-pink-400/50 hover:border-pink-300",
+    bgClass: "bg-[#18071a]/92 hover:bg-[#270c2b]",
     textClass: "text-pink-300",
-    glowColor: "rgba(236, 72, 153, 0.4)",
-    desktopPos: "bottom-[3%] right-[3%] xl:right-[6%]",
+    glowColor: "rgba(236, 72, 153, 0.45)",
+    desktopPos: "bottom-[2%] right-[2%] xl:right-[5%]",
     path: "M 355 385 L 445 455",
     nodeCoord: { cx: 445, cy: 455 },
     floatAnimation: {
@@ -123,11 +175,22 @@ const skillModules = [
   },
 ];
 
+// Floating Supporting Tech Badges
+const techBadges = [
+  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[15%] left-[6%]" },
+  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[15%] right-[6%]" },
+  { icon: SiJavascript, name: "JavaScript", color: "#f59e0b", pos: "bottom-[22%] left-[2%]" },
+  { icon: SiMongodb, name: "MongoDB", color: "#22c55e", pos: "bottom-[22%] right-[2%]" },
+  { icon: FaGitAlt, name: "Git", color: "#f97316", pos: "top-[4%] left-[28%]" },
+  { icon: SiCplusplus, name: "C++", color: "#3b82f6", pos: "bottom-[6%] left-[45%]" },
+];
+
 /**
  * Hero
- * Futuristic Engineering Command Interface & Core Ecosystem.
- * Clean, aligned, recruiter-focused layout with 48% / 52% desktop grid balance,
- * high-contrast typography, central HUD Engineering Core, and 5 interactive skill modules.
+ * Futuristic Engineering Ecosystem & Holographic HUD Showcase.
+ * Rebuilt to match the approved reference design with clean 48/52 desktop grid balance,
+ * large circular holographic profile core, 5 interconnected skill modules, floating tech icons,
+ * 4 real factual metric cards, and verified career highlights.
  */
 const Hero = () => {
   const typedRole = useTypewriter(roles, { pause: 1600 });
@@ -142,14 +205,14 @@ const Hero = () => {
 
       <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-12 xl:px-16 relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[48fr_52fr] lg:gap-10 xl:gap-14">
-          {/* Left Column (48%): Typography, Headline, Bio, Buttons & Socials */}
+          {/* Left Column: Headline, Chips, Bio, Info Cards, Buttons & Socials */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
-            {/* Status Pill */}
+            {/* Opportunity Status Pill */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -168,7 +231,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.65rem] font-extrabold leading-[1.1] text-white"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-extrabold leading-[1.1] text-white"
             >
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 bg-clip-text text-transparent">
@@ -204,7 +267,28 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* Concise Bio */}
+            {/* Role Chips */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-3.5 flex flex-wrap items-center justify-center gap-2 lg:justify-start"
+            >
+              {roleChips.map((chip) => {
+                const Icon = chip.icon;
+                return (
+                  <span
+                    key={chip.label}
+                    className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 font-mono text-[11px] font-medium backdrop-blur-md transition-all duration-300 hover:scale-105 ${chip.color}`}
+                  >
+                    <Icon className="text-xs" />
+                    {chip.label}
+                  </span>
+                );
+              })}
+            </motion.div>
+
+            {/* Concise Description */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -214,7 +298,33 @@ const Hero = () => {
               {personalInfo.supportingText}
             </motion.p>
 
-            {/* CTA Button Group */}
+            {/* 4 Compact Real Info Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-[600px]"
+            >
+              {infoCards.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <div
+                    key={card.value}
+                    className={`flex flex-col items-start rounded-xl border p-2.5 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 ${card.color}`}
+                  >
+                    <Icon className="text-base mb-1" />
+                    <span className="font-display text-xs font-bold text-white whitespace-nowrap">
+                      {card.value}
+                    </span>
+                    <span className="font-mono text-[9px] text-slate-300/80 truncate w-full">
+                      {card.label}
+                    </span>
+                  </div>
+                );
+              })}
+            </motion.div>
+
+            {/* Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -226,7 +336,7 @@ const Hero = () => {
                 href="#projects"
                 className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 px-6 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/45 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
               >
-                <FiEye className="text-base" /> View My Work
+                <FiEye className="text-base" /> View My Work <FiArrowRight className="text-sm" />
               </a>
 
               {/* Secondary: Download Resume */}
@@ -243,7 +353,7 @@ const Hero = () => {
                 href="#contact"
                 className="inline-flex items-center gap-2.5 rounded-full border border-purple-500/30 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-slate-200 backdrop-blur-md transition-all duration-300 hover:border-purple-400/60 hover:bg-white/[0.07] hover:text-white hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
               >
-                <HiOutlineMail className="text-base text-purple-400" /> Contact Me
+                <HiOutlineMail className="text-base text-purple-400" /> Contact Me <FiArrowRight className="text-sm" />
               </a>
             </motion.div>
 
@@ -285,7 +395,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column (52%): Central HUD Engineering Core & 5 Skill Modules */}
+          {/* Right Column (52%): Main Holographic Engineering Core & Skill Ecosystem */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -293,8 +403,8 @@ const Hero = () => {
             className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[540px] lg:max-w-none"
           >
             {/* Central Engineering Command HUD Container */}
-            <div className="relative flex items-center justify-center h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] lg:h-[480px] lg:w-[480px] xl:h-[530px] xl:w-[530px]">
-              {/* SVG HUD Circuit Architecture & Radial Track Lines (Desktop Only) */}
+            <div className="relative flex items-center justify-center h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] lg:h-[490px] lg:w-[490px] xl:h-[540px] xl:w-[540px]">
+              {/* SVG HUD Circuit Architecture & Radial Orbit Track Lines (Desktop Only) */}
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 hidden lg:block h-full w-full"
@@ -305,7 +415,7 @@ const Hero = () => {
                 <circle
                   cx="270"
                   cy="270"
-                  r="165"
+                  r="160"
                   stroke="rgba(0, 240, 255, 0.22)"
                   strokeWidth="1.2"
                   strokeDasharray="6 8"
@@ -314,42 +424,50 @@ const Hero = () => {
                 <circle
                   cx="270"
                   cy="270"
-                  r="220"
+                  r="215"
                   stroke="rgba(168, 85, 247, 0.18)"
                   strokeWidth="1"
                   strokeDasharray="4 12"
                   className="animate-hud-spin-reverse"
                 />
+                <circle
+                  cx="270"
+                  cy="270"
+                  r="255"
+                  stroke="rgba(56, 189, 248, 0.12)"
+                  strokeWidth="1"
+                  strokeDasharray="2 10"
+                />
 
                 {/* HUD Cardinal Axis Crosshairs */}
                 <line
                   x1="270"
-                  y1="40"
+                  y1="35"
                   x2="270"
-                  y2="70"
+                  y2="65"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
                   x1="270"
-                  y1="470"
+                  y1="475"
                   x2="270"
-                  y2="500"
+                  y2="505"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="40"
+                  x1="35"
                   y1="270"
-                  x2="70"
+                  x2="65"
                   y2="270"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="470"
+                  x1="475"
                   y1="270"
-                  x2="500"
+                  x2="505"
                   y2="270"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
@@ -398,43 +516,68 @@ const Hero = () => {
                 className="absolute inset-4 rounded-full bg-gradient-to-tr from-cyan-500/25 via-blue-500/15 to-purple-500/25 blur-3xl animate-cyber-breath"
               />
 
-              {/* Central Profile Core with Breathing Glow & Floating Motion */}
+              {/* Decorative Floating Technology Badges (Desktop Only) */}
+              <div className="hidden xl:block pointer-events-none">
+                {techBadges.map((badge, idx) => {
+                  const Icon = badge.icon;
+                  return (
+                    <motion.div
+                      key={badge.name}
+                      animate={{
+                        y: idx % 2 === 0 ? [0, -6, 0] : [0, 6, 0],
+                        opacity: [0.65, 0.95, 0.65],
+                      }}
+                      transition={{
+                        duration: 4 + idx * 0.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: idx * 0.3,
+                      }}
+                      className={`absolute ${badge.pos} z-10 flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#070d1e]/80 shadow-md backdrop-blur-md`}
+                      style={{ color: badge.color }}
+                    >
+                      <Icon className="text-xs" />
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Central Large Circular Profile Core */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-20 group"
               >
-                {/* Outer Cyber Shield Frame */}
-                <div className="relative h-56 w-56 sm:h-64 sm:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80 rounded-[32px] p-1.5 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_45px_-10px_rgba(0,240,255,0.35)] transition-all duration-500 group-hover:shadow-[0_0_65px_-5px_rgba(0,240,255,0.55)]">
-                  {/* Inner Canvas */}
-                  <div className="relative h-full w-full overflow-hidden rounded-[26px] bg-[#050914]">
+                {/* Outer Circular Neon Shield Frame */}
+                <div className="relative h-56 w-56 sm:h-64 sm:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80 rounded-full p-1.5 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_45px_-10px_rgba(0,240,255,0.4)] transition-all duration-500 group-hover:shadow-[0_0_65px_-5px_rgba(0,240,255,0.6)]">
+                  {/* Inner Circular Canvas */}
+                  <div className="relative h-full w-full overflow-hidden rounded-full bg-[#050914]">
                     <img
                       src={profileImg}
                       alt="Moneswar Sundareswaran - Computer Science & Design Undergraduate"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="eager"
                     />
-                    {/* Subtle Scanline Overlay */}
-                    <div className="scanline-overlay absolute inset-0 pointer-events-none opacity-45" />
+                    {/* Subtle Holographic Scanline Overlay */}
+                    <div className="scanline-overlay absolute inset-0 pointer-events-none opacity-40" />
 
                     {/* Top HUD Status Tag */}
-                    <div className="absolute top-2.5 inset-x-3 flex items-center justify-between pointer-events-none">
-                      <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-cyan-300 bg-slate-950/85 px-2 py-0.5 rounded border border-cyan-500/30 backdrop-blur-md">
+                    <div className="absolute top-3 inset-x-4 flex items-center justify-between pointer-events-none">
+                      <span className="font-mono text-[8px] sm:text-[9px] font-bold uppercase tracking-wider text-cyan-300 bg-slate-950/85 px-2 py-0.5 rounded-full border border-cyan-500/30 backdrop-blur-md">
                         SYS_CORE // MS-01
                       </span>
-                      <span className="flex items-center gap-1 font-mono text-[9px] font-bold text-emerald-400 bg-slate-950/85 px-2 py-0.5 rounded border border-emerald-500/30 backdrop-blur-md">
+                      <span className="flex items-center gap-1 font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 bg-slate-950/85 px-2 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur-md">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                         ONLINE
                       </span>
                     </div>
 
-                    {/* Bottom HUD Brackets */}
-                    <span className="absolute bottom-2.5 left-3 text-[12px] font-mono font-bold text-cyan-400/90 leading-none">
-                      [ + ]
-                    </span>
-                    <span className="absolute bottom-2.5 right-3 font-mono text-[9px] font-bold text-slate-400 bg-slate-950/85 px-2 py-0.5 rounded border border-white/10 backdrop-blur-md">
-                      CSD // 2027
-                    </span>
+                    {/* Bottom HUD Tag */}
+                    <div className="absolute bottom-3 inset-x-0 flex justify-center pointer-events-none">
+                      <span className="font-mono text-[9px] font-bold text-slate-300 bg-slate-950/85 px-3 py-0.5 rounded-full border border-white/15 backdrop-blur-md">
+                        CSD // 2027
+                      </span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -458,8 +601,8 @@ const Hero = () => {
                           mod.borderClass
                         } ${mod.bgClass} ${
                           isHovered
-                            ? "scale-105 bg-[#060b18]/95 shadow-2xl"
-                            : "bg-[#060b18]/85"
+                            ? "scale-105 bg-[#060e1c]/95 shadow-2xl"
+                            : "bg-[#060e1c]/88"
                         }`}
                         style={{
                           boxShadow: isHovered
@@ -506,7 +649,7 @@ const Hero = () => {
                 return (
                   <div
                     key={mod.id}
-                    className={`flex items-center gap-3 rounded-xl border p-2.5 backdrop-blur-lg bg-[#060b18]/90 shadow-md ${mod.borderClass}`}
+                    className={`flex items-center gap-3 rounded-xl border p-2.5 backdrop-blur-lg bg-[#060e1c]/90 shadow-md ${mod.borderClass}`}
                   >
                     <span
                       className={`flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.08] ${mod.textClass} text-base shrink-0 border border-white/10`}
