@@ -192,8 +192,10 @@ const techBadges = [
 /**
  * Hero
  * Engineering / Developer Command Center Portfolio Hero.
- * Reproduces the exact visual composition, proportions, hierarchy, and futuristic aesthetic
- * of the primary reference design.
+ * Matches the primary visual reference design with a 44/56 desktop split,
+ * 4-line typography composition, 2-row role chips, 4 equal-height factual metric cards,
+ * large circular portrait core, 5 interconnected skill modules, floating IDE code panel,
+ * lower-right developer laptop visual, and flowing bottom digital terrain wave.
  */
 const Hero = () => {
   const typedRole = useTypewriter(roles, { pause: 1600 });
@@ -449,6 +451,7 @@ const Hero = () => {
                   &nbsp;&nbsp;name: <span className="text-emerald-300">"Moneswar"</span>,<br />
                   &nbsp;&nbsp;degree: <span className="text-amber-300">"BE (CSD)"</span>,<br />
                   &nbsp;&nbsp;skills: [<span className="text-sky-300">"Full-Stack"</span>, <span className="text-purple-300">"Embedded"</span>],<br />
+                  &nbsp;&nbsp;passion: <span className="text-pink-300">"Build &amp; Innovate"</span>,<br />
                   &nbsp;&nbsp;status: <span className="text-emerald-400 font-bold">"Open to Work"</span><br />
                   &#125;;
                 </div>
