@@ -1,17 +1,17 @@
 /* ============================================================================
    index.css — global styles & design tokens
    Tailwind v4 CSS-first design system for Moneswar Sundareswaran's portfolio.
-   Futuristic Cyber-Tech Engineer aesthetic with holographic orbit ecosystem.
+   Futuristic Cyber-Tech Engineering HUD Core & Holographic Interface.
    ============================================================================ */
 @import "tailwindcss";
 
 @theme {
   /* Core palette — deep cyber dark slate/black background with neon accents */
-  --color-bg: #050811;
-  --color-surface: #090e1c;
-  --color-surface-hover: #10172c;
-  --color-card: rgba(9, 14, 28, 0.75);
-  --color-card-hover: rgba(16, 23, 44, 0.85);
+  --color-bg: #040711;
+  --color-surface: #080d1a;
+  --color-surface-hover: #0f172a;
+  --color-card: rgba(8, 13, 26, 0.8);
+  --color-card-hover: rgba(15, 23, 42, 0.9);
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-hover: rgba(0, 240, 255, 0.4);
 
@@ -37,7 +37,7 @@
   --radius-card: 20px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 20px 50px -15px rgba(0, 0, 0, 0.75);
+  --shadow-soft: 0 20px 50px -15px rgba(0, 0, 0, 0.8);
   --shadow-glow-cyan: 0 0 35px -8px rgba(0, 240, 255, 0.4);
   --shadow-glow-purple: 0 0 35px -8px rgba(168, 85, 247, 0.4);
 }
@@ -65,7 +65,7 @@
 
   ::selection {
     background: var(--color-cyan);
-    color: #050811;
+    color: #040711;
   }
 
   /* Custom futuristic scrollbar */
@@ -73,7 +73,7 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #050811;
+    background: #040711;
   }
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #00f0ff, #a855f7);
@@ -116,10 +116,19 @@
   .scanline-overlay {
     background: linear-gradient(
       180deg,
-      rgba(0, 240, 255, 0.03) 50%,
-      rgba(0, 0, 0, 0.25) 51%
+      rgba(0, 240, 255, 0.04) 50%,
+      rgba(0, 0, 0, 0.3) 51%
     );
     background-size: 100% 4px;
+  }
+
+  /* Octagonal Chamfered Cyber Clip Path */
+  .clip-cyber-oct {
+    clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0% 88%, 0% 12%);
+  }
+
+  .clip-cyber-module {
+    clip-path: polygon(8% 0%, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 8% 100%, 0% 82%, 0% 18%);
   }
 
   /* Futuristic text gradients */
@@ -174,33 +183,33 @@
   }
 }
 
-/* Keyframe animations for holographic floating, orbit rotation, and circuit pulses */
-@keyframes float-gentle {
-  0%, 100% {
-    transform: translateY(0px);
+/* Keyframe animations for HUD rotations, radar scans, and circuit pulses */
+@keyframes hud-spin-slow {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes float-reverse-gentle {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(6px);
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes cyber-pulse {
+@keyframes hud-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes cyber-breath {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.35;
     transform: scale(1);
   }
   50% {
-    opacity: 0.65;
-    transform: scale(1.04);
+    opacity: 0.75;
+    transform: scale(1.06);
   }
 }
 
@@ -210,16 +219,16 @@
   }
 }
 
-.animate-float-gentle {
-  animation: float-gentle 4.5s ease-in-out infinite;
+.animate-hud-spin {
+  animation: hud-spin-slow 45s linear infinite;
 }
 
-.animate-float-reverse-gentle {
-  animation: float-reverse-gentle 5.5s ease-in-out infinite;
+.animate-hud-spin-reverse {
+  animation: hud-spin-reverse 60s linear infinite;
 }
 
-.animate-cyber-pulse {
-  animation: cyber-pulse 4s ease-in-out infinite;
+.animate-cyber-breath {
+  animation: cyber-breath 4.5s ease-in-out infinite;
 }
 
 .animate-dash-flow {
