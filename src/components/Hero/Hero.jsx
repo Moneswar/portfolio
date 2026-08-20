@@ -35,20 +35,17 @@ import AnimatedBackground from "../shared/AnimatedBackground";
 import profileImg from "../../assets/favicon.png";
 
 const roles = [
-  "Full-Stack Web Developer",
   "Embedded Systems Enthusiast",
+  "Full-Stack Web Developer",
   "Software Developer",
   "UI/UX Designer",
 ];
 
-// Verified Role Chips with Icons (Arranged in 2 Rows on Desktop)
-const row1Chips = [
+// Verified Role Chips with Icons
+const roleChips = [
   { label: "Full-Stack Web Developer", icon: FiLayers, color: "text-cyan-300 border-cyan-500/35 bg-cyan-500/10" },
   { label: "Embedded Systems Enthusiast", icon: FiCpu, color: "text-emerald-300 border-emerald-500/35 bg-emerald-500/10" },
   { label: "Software Developer", icon: FiCode, color: "text-purple-300 border-purple-500/35 bg-purple-500/10" },
-];
-
-const row2Chips = [
   { label: "UI/UX Designer", icon: FiLayout, color: "text-pink-300 border-pink-500/35 bg-pink-500/10" },
 ];
 
@@ -63,7 +60,7 @@ const infoCards = [
   {
     icon: FiBookOpen,
     value: "BE (CSD) Degree",
-    label: "Kongu Engg College '27",
+    label: "Kongu Engineering College '27",
     color: "text-blue-400 border-blue-500/30 bg-blue-950/30",
   },
   {
@@ -94,8 +91,8 @@ const skillModules = [
     textClass: "text-emerald-300",
     glowColor: "rgba(0, 255, 157, 0.45)",
     desktopPos: "top-[-1.5rem] left-1/2 -translate-x-1/2",
-    path: "M 290 165 L 290 80",
-    nodeCoord: { cx: 290, cy: 80 },
+    path: "M 310 175 L 310 85",
+    nodeCoord: { cx: 310, cy: 85 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0 },
@@ -112,9 +109,9 @@ const skillModules = [
     bgClass: "bg-[#041220]/92 hover:bg-[#071c32]",
     textClass: "text-cyan-300",
     glowColor: "rgba(0, 240, 255, 0.45)",
-    desktopPos: "top-[40%] -left-[2.75rem] xl:-left-[3.25rem]",
-    path: "M 150 290 L 55 290",
-    nodeCoord: { cx: 55, cy: 290 },
+    desktopPos: "top-[40%] -left-[2.75rem] xl:-left-[3.5rem]",
+    path: "M 160 310 L 60 310",
+    nodeCoord: { cx: 60, cy: 310 },
     floatAnimation: {
       y: [0, 4, 0],
       transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
@@ -131,9 +128,9 @@ const skillModules = [
     bgClass: "bg-[#041124]/92 hover:bg-[#071b38]",
     textClass: "text-sky-300",
     glowColor: "rgba(56, 189, 248, 0.45)",
-    desktopPos: "top-[40%] -right-[2.75rem] xl:-right-[3.25rem]",
-    path: "M 430 290 L 525 290",
-    nodeCoord: { cx: 525, cy: 290 },
+    desktopPos: "top-[40%] -right-[2.75rem] xl:-right-[3.5rem]",
+    path: "M 460 310 L 560 310",
+    nodeCoord: { cx: 560, cy: 310 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
@@ -150,9 +147,9 @@ const skillModules = [
     bgClass: "bg-[#0c0822]/92 hover:bg-[#150d3c]",
     textClass: "text-purple-300",
     glowColor: "rgba(168, 85, 247, 0.45)",
-    desktopPos: "bottom-[0%] left-[2%] xl:left-[5%]",
-    path: "M 200 410 L 110 485",
-    nodeCoord: { cx: 110, cy: 485 },
+    desktopPos: "bottom-[0%] left-[2%] xl:left-[4%]",
+    path: "M 215 435 L 120 515",
+    nodeCoord: { cx: 120, cy: 515 },
     floatAnimation: {
       y: [0, 4, 0],
       transition: { duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
@@ -169,9 +166,9 @@ const skillModules = [
     bgClass: "bg-[#18071a]/92 hover:bg-[#270c2b]",
     textClass: "text-pink-300",
     glowColor: "rgba(236, 72, 153, 0.45)",
-    desktopPos: "bottom-[0%] right-[2%] xl:right-[5%]",
-    path: "M 380 410 L 470 485",
-    nodeCoord: { cx: 470, cy: 485 },
+    desktopPos: "bottom-[0%] right-[2%] xl:right-[4%]",
+    path: "M 405 435 L 500 515",
+    nodeCoord: { cx: 500, cy: 515 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 2 },
@@ -181,8 +178,8 @@ const skillModules = [
 
 // Floating Supporting Tech Badges
 const techBadges = [
-  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[12%] left-[4%]" },
-  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[12%] right-[4%]" },
+  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[12%] left-[5%]" },
+  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[12%] right-[5%]" },
   { icon: SiJavascript, name: "JavaScript", color: "#f59e0b", pos: "bottom-[22%] left-[1%]" },
   { icon: SiMongodb, name: "MongoDB", color: "#22c55e", pos: "bottom-[22%] right-[1%]" },
   { icon: FaGitAlt, name: "Git", color: "#f97316", pos: "top-[2%] left-[22%]" },
@@ -192,9 +189,9 @@ const techBadges = [
 /**
  * Hero
  * Engineering / Developer Command Center Portfolio Hero.
- * Matches the primary visual reference design with a 44/56 desktop split,
- * 4-line typography composition, 2-row role chips, 4 equal-height factual metric cards,
- * large circular portrait core, 5 interconnected skill modules, floating IDE code panel,
+ * Matches the primary visual reference design with a balanced 43/57 desktop split,
+ * 4-line typography composition, compact role chips, 4 equal-height factual metric cards,
+ * enlarged 335px circular portrait core, 5 interconnected skill modules, floating IDE panel,
  * lower-right developer laptop visual, and flowing bottom digital terrain wave.
  */
 const Hero = () => {
@@ -208,9 +205,9 @@ const Hero = () => {
     >
       <AnimatedBackground />
 
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-10 xl:px-12 relative z-10">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[44fr_56fr] lg:gap-8 xl:gap-12">
-          {/* Left Column (44%): Status, Headline, Degree, Role Chips, Description, Metrics, CTA & Socials */}
+      <div className="mx-auto w-full max-w-[1520px] px-4 sm:px-8 lg:px-10 xl:px-12 relative z-10">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[43fr_57fr] lg:gap-8 xl:gap-12">
+          {/* Left Column (43%): Status, Headline, Degree, Role Chips, Description, Metrics, CTA & Socials */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -231,7 +228,7 @@ const Hero = () => {
               OPEN TO INTERNSHIPS &amp; JOB OPPORTUNITIES
             </motion.div>
 
-            {/* Main Headline (Exact 4-line Composition, Controlled 56-62px Desktop) */}
+            {/* Main Headline (Exact 4-line Composition, Controlled 56-64px Desktop) */}
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -269,62 +266,43 @@ const Hero = () => {
               </span>
               <span className="text-slate-500 font-bold">|</span>
               <div className="flex items-center min-w-[180px]">
-                <span className="text-slate-200">{typedRole}</span>
+                <span className="text-cyan-300 font-semibold">{typedRole}</span>
                 <span className="ml-1 inline-block h-3.5 w-[2px] bg-cyan-400 animate-pulse" />
               </div>
             </motion.div>
 
-            {/* Role Chips (2 Rows on Desktop) */}
+            {/* Role Chips (Compact Group) */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.24 }}
-              className="mt-3 flex flex-col gap-1.5 items-center lg:items-start"
+              className="mt-3 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 lg:justify-start max-w-[560px]"
             >
-              {/* Row 1 */}
-              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 lg:justify-start">
-                {row1Chips.map((chip) => {
-                  const Icon = chip.icon;
-                  return (
-                    <span
-                      key={chip.label}
-                      className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-0.5 font-mono text-[10.5px] sm:text-[11px] font-medium backdrop-blur-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${chip.color}`}
-                    >
-                      <Icon className="text-xs" />
-                      {chip.label}
-                    </span>
-                  );
-                })}
-              </div>
-
-              {/* Row 2 */}
-              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 lg:justify-start">
-                {row2Chips.map((chip) => {
-                  const Icon = chip.icon;
-                  return (
-                    <span
-                      key={chip.label}
-                      className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-0.5 font-mono text-[10.5px] sm:text-[11px] font-medium backdrop-blur-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${chip.color}`}
-                    >
-                      <Icon className="text-xs" />
-                      {chip.label}
-                    </span>
-                  );
-                })}
-              </div>
+              {roleChips.map((chip) => {
+                const Icon = chip.icon;
+                return (
+                  <span
+                    key={chip.label}
+                    className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-0.5 font-mono text-[10.5px] sm:text-[11px] font-medium backdrop-blur-md transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${chip.color}`}
+                  >
+                    <Icon className="text-xs" />
+                    {chip.label}
+                  </span>
+                );
+              })}
             </motion.div>
 
-            {/* Description (Factual, 520-570px wide) */}
+            {/* Description (Factual, max ~560px wide) */}
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.3 }}
-              className="mt-3.5 max-w-[550px] text-xs sm:text-[14px] leading-relaxed text-slate-300/90"
+              className="mt-3.5 max-w-[560px] text-xs sm:text-[14px] leading-relaxed text-slate-300/90"
             >
               Computer Science and Design undergraduate with hands-on experience in full-stack web development, embedded systems, and UI/UX design. Interested in building practical, user-focused solutions that combine software, hardware, and modern web technologies.
             </motion.p>
 
-            {/* 4 Compact Real Info Cards (Single Row on Desktop, Equal Height 95-105px & Width) */}
+            {/* 4 Compact Real Info Cards (Single Row on Desktop, Equal Height & Width) */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -336,7 +314,7 @@ const Hero = () => {
                 return (
                   <div
                     key={card.value}
-                    className={`flex flex-col items-start justify-center min-h-[85px] sm:min-h-[92px] rounded-xl border p-2.5 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${card.color}`}
+                    className={`flex flex-col items-start justify-center min-h-[88px] sm:min-h-[95px] rounded-xl border p-2.5 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${card.color}`}
                   >
                     <Icon className="text-base mb-1" />
                     <span className="font-display text-xs sm:text-[13px] font-bold text-white whitespace-nowrap">
@@ -423,15 +401,15 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column (56%): Unified Relative Holographic Engineering Ecosystem Container */}
+          {/* Right Column (57%): Unified Relative Holographic Engineering Ecosystem Container (620x620 Canvas) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
-            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[580px] lg:max-w-none"
+            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[620px] lg:max-w-none"
           >
-            {/* Single Relative Coordinate Canvas (580x580) */}
-            <div className="relative flex items-center justify-center h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] lg:h-[500px] lg:w-[500px] xl:h-[580px] xl:w-[580px]">
+            {/* Single Relative Coordinate Canvas (620x620) */}
+            <div className="relative flex items-center justify-center h-[400px] w-[400px] sm:h-[480px] sm:w-[480px] lg:h-[540px] lg:w-[540px] xl:h-[620px] xl:w-[620px]">
               {/* Upper-Right Floating IDE Code Panel */}
               <div className="hidden xl:block absolute -top-6 -right-2 z-10 w-56 rounded-xl border border-cyan-500/30 bg-[#050a18]/90 p-2.5 backdrop-blur-md shadow-lg shadow-cyan-500/10 pointer-events-none opacity-90 animate-float-gentle">
                 <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
@@ -482,32 +460,32 @@ const Hero = () => {
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 hidden lg:block h-full w-full"
-                viewBox="0 0 580 580"
+                viewBox="0 0 620 620"
                 fill="none"
               >
                 {/* Concentric Rotating HUD Orbit Rings */}
                 <circle
-                  cx="290"
-                  cy="290"
-                  r="170"
+                  cx="310"
+                  cy="310"
+                  r="185"
                   stroke="rgba(0, 240, 255, 0.24)"
                   strokeWidth="1.2"
                   strokeDasharray="6 8"
                   className="animate-hud-spin"
                 />
                 <circle
-                  cx="290"
-                  cy="290"
-                  r="230"
+                  cx="310"
+                  cy="310"
+                  r="245"
                   stroke="rgba(168, 85, 247, 0.2)"
                   strokeWidth="1"
                   strokeDasharray="4 12"
                   className="animate-hud-spin-reverse"
                 />
                 <circle
-                  cx="290"
-                  cy="290"
-                  r="270"
+                  cx="310"
+                  cy="310"
+                  r="290"
                   stroke="rgba(56, 189, 248, 0.12)"
                   strokeWidth="1"
                   strokeDasharray="2 10"
@@ -515,34 +493,34 @@ const Hero = () => {
 
                 {/* HUD Cardinal Axis Crosshairs */}
                 <line
-                  x1="290"
+                  x1="310"
                   y1="25"
-                  x2="290"
-                  y2="65"
+                  x2="310"
+                  y2="70"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="290"
-                  y1="515"
-                  x2="290"
-                  y2="555"
+                  x1="310"
+                  y1="550"
+                  x2="310"
+                  y2="595"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
                   x1="25"
-                  y1="290"
-                  x2="65"
-                  y2="290"
+                  y1="310"
+                  x2="70"
+                  y2="310"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="515"
-                  y1="290"
-                  x2="555"
-                  y2="290"
+                  x1="550"
+                  y1="310"
+                  x2="595"
+                  y2="310"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
@@ -616,14 +594,14 @@ const Hero = () => {
                 })}
               </div>
 
-              {/* Central Large Circular Profile Core (Diameter 300-320px on desktop) */}
+              {/* Central Large Circular Profile Core (Diameter 335px on desktop) */}
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-20 group"
               >
                 {/* Outer Circular Neon Shield Frame */}
-                <div className="relative h-52 w-52 sm:h-60 sm:w-60 lg:h-68 lg:w-68 xl:h-[315px] xl:w-[315px] rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_45px_-8px_rgba(0,240,255,0.45)] transition-all duration-500 group-hover:shadow-[0_0_60px_-5px_rgba(0,240,255,0.65)]">
+                <div className="relative h-56 w-56 sm:h-64 sm:w-64 lg:h-76 lg:w-76 xl:h-[335px] xl:w-[335px] rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_48px_-8px_rgba(0,240,255,0.48)] transition-all duration-500 group-hover:shadow-[0_0_65px_-5px_rgba(0,240,255,0.7)]">
                   {/* Inner Circular Canvas */}
                   <div className="relative h-full w-full overflow-hidden rounded-full bg-[#050914]">
                     <img
