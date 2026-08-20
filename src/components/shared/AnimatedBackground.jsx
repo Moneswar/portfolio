@@ -1,28 +1,38 @@
 /**
  * AnimatedBackground
- * Two soft, slow-moving gradient blobs plus a faint grid overlay.
- * Pure CSS animation (see the `blob` keyframes in index.css) — no JS work,
- * so it stays cheap on lower-end devices.
+ * Futuristic cyber-tech background with faint digital grid texture,
+ * ambient neon gradient spotlights, and subtle atmospheric glows.
  */
 const AnimatedBackground = () => {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Faint grid for texture */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {/* Subtle Digital Cyber Grid */}
       <div
-        className="absolute inset-0 opacity-[0.035]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
+          backgroundImage: `
+            linear-gradient(to right, #00f0ff 1px, transparent 1px),
+            linear-gradient(to bottom, #00f0ff 1px, transparent 1px)
+          `,
+          backgroundSize: "48px 48px",
         }}
       />
+
+      {/* Futuristic Radial Accent Spotlights */}
       <div
-        className="absolute -left-24 top-10 h-[420px] w-[420px] rounded-full opacity-25 blur-[100px] animate-[blob_18s_ease-in-out_infinite]"
-        style={{ background: "var(--color-cyan)" }}
+        className="absolute -left-28 top-12 h-[480px] w-[480px] rounded-full opacity-20 blur-[120px] animate-cyber-pulse"
+        style={{ background: "radial-gradient(circle, #00f0ff 0%, #3b82f6 100%)" }}
       />
       <div
-        className="absolute -right-24 bottom-0 h-[420px] w-[420px] rounded-full opacity-20 blur-[110px] animate-[blob_22s_ease-in-out_infinite]"
-        style={{ background: "var(--color-purple)", animationDelay: "-6s" }}
+        className="absolute -right-28 top-1/3 h-[520px] w-[520px] rounded-full opacity-15 blur-[130px] animate-cyber-pulse [animation-delay:-2s]"
+        style={{ background: "radial-gradient(circle, #a855f7 0%, #ec4899 100%)" }}
+      />
+      <div
+        className="absolute left-1/3 bottom-0 h-[400px] w-[400px] rounded-full opacity-10 blur-[100px]"
+        style={{ background: "radial-gradient(circle, #00ff9d 0%, #06b6d4 100%)" }}
       />
     </div>
   );

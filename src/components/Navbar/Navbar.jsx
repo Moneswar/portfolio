@@ -5,12 +5,14 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { navLinks } from "../../data/resumeData";
 import useActiveSection from "../../hooks/useActiveSection";
 
-const sectionIds = navLinks.map((link) => link.href.replace("/#", "").replace("#", ""));
+const sectionIds = navLinks.map((link) =>
+  link.href.replace("/#", "").replace("#", "")
+);
 
 /**
  * Navbar
- * Sticky top navigation bar with active section indicator, smooth multi-route navigation,
- * and responsive mobile drawer.
+ * Futuristic Cyber-Tech Navigation Bar.
+ * Sticky glassmorphic header with active neon indicator, glowing brand mark, and smooth multi-route navigation.
  */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -59,26 +61,31 @@ const Navbar = () => {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-[#0a0e1a]/85 backdrop-blur-xl shadow-lg shadow-black/20"
+          ? "border-b border-white/10 bg-[#060913]/90 backdrop-blur-xl shadow-2xl shadow-black/60"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <nav
         aria-label="Main Navigation"
-        className="container-px mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between"
+        className="container-px mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between"
       >
-        {/* Brand Mark */}
+        {/* Brand Mark with Cybernetic Neon Glow */}
         <Link
           to="/#home"
           onClick={(e) => handleNavClick(e, "/#home")}
-          className="group flex items-center gap-2.5 font-display text-base sm:text-lg font-bold tracking-tight text-white focus-visible:outline-2 focus-visible:outline-(--color-cyan) rounded-lg"
+          className="group flex items-center gap-3 font-display text-base sm:text-lg font-bold tracking-tight text-white focus-visible:outline-2 focus-visible:outline-cyan-400 rounded-xl"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-(--color-cyan) to-(--color-purple) text-sm font-bold text-slate-950 shadow-md transition-transform duration-300 group-hover:scale-105">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 text-sm font-black text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-cyan-500/40">
             MS
           </span>
-          <span className="inline-block">
-            Moneswar<span className="text-(--color-cyan)">.</span>
-          </span>
+          <div className="flex flex-col">
+            <span className="leading-none text-sm sm:text-base tracking-wide font-extrabold text-white">
+              Moneswar<span className="text-cyan-400">.</span>
+            </span>
+            <span className="text-[10px] font-mono font-medium tracking-wider text-slate-400 uppercase">
+              Engineer
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -91,9 +98,9 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:outline-2 focus-visible:outline-(--color-cyan) ${
+                  className={`relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:outline-2 focus-visible:outline-cyan-400 ${
                     isActive
-                      ? "text-white font-semibold"
+                      ? "text-cyan-300 font-semibold"
                       : "text-slate-300 hover:text-white"
                   }`}
                 >
@@ -101,7 +108,7 @@ const Navbar = () => {
                   {isActive && (
                     <motion.span
                       layoutId="navbar-active-underline"
-                      className="absolute inset-x-2 -bottom-1 h-[2.5px] rounded-full bg-gradient-to-r from-(--color-cyan) via-(--color-cyan-light) to-(--color-purple)"
+                      className="absolute inset-x-2 -bottom-1 h-[2.5px] rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-purple-500 shadow-sm shadow-cyan-400/50"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -116,7 +123,7 @@ const Navbar = () => {
           <a
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-4.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-md shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/35 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-md shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/45 hover:-translate-y-0.5"
           >
             Let's Talk
           </a>
@@ -128,7 +135,7 @@ const Navbar = () => {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((prev) => !prev)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-xl text-slate-200 transition-colors hover:border-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-(--color-cyan) md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-xl text-slate-200 transition-colors hover:border-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-cyan-400 md:hidden"
         >
           {mobileOpen ? <HiX /> : <HiMenu />}
         </button>
@@ -142,7 +149,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-b border-white/10 bg-[#0a0e1a]/98 backdrop-blur-2xl md:hidden shadow-2xl"
+            className="overflow-hidden border-b border-white/10 bg-[#060913]/98 backdrop-blur-2xl md:hidden shadow-2xl"
           >
             <ul className="container-px mx-auto flex flex-col gap-1.5 py-5">
               {navLinks.map((link) => {
@@ -155,13 +162,13 @@ const Navbar = () => {
                       onClick={(e) => handleNavClick(e, link.href)}
                       className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${
                         isActive
-                          ? "bg-white/[0.08] text-cyan-300 font-semibold border border-cyan-500/30"
+                          ? "bg-cyan-500/10 text-cyan-300 font-semibold border border-cyan-500/30 shadow-sm"
                           : "text-slate-300 hover:bg-white/[0.04] hover:text-white"
                       }`}
                     >
                       <span>{link.label}</span>
                       {isActive && (
-                        <span className="h-2 w-2 rounded-full bg-(--color-cyan)" />
+                        <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400" />
                       )}
                     </a>
                   </li>
@@ -171,7 +178,7 @@ const Navbar = () => {
                 <a
                   href="/#contact"
                   onClick={(e) => handleNavClick(e, "/#contact")}
-                  className="flex items-center justify-center rounded-xl bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-4 py-3 text-center text-sm font-bold text-slate-950 shadow-md"
+                  className="flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-4 py-3 text-center text-sm font-bold text-slate-950 shadow-md"
                 >
                   Contact Me
                 </a>

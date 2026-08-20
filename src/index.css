@@ -1,24 +1,29 @@
 /* ============================================================================
    index.css — global styles & design tokens
    Tailwind v4 CSS-first design system for Moneswar Sundareswaran's portfolio.
-   Focused on clean visual hierarchy, dark glassmorphism, and recruiter appeal.
+   Futuristic Cyber-Tech Engineer aesthetic with glassmorphism & neon lighting.
    ============================================================================ */
 @import "tailwindcss";
 
 @theme {
-  /* Core palette — deep dark slate background, refined cyan & purple accents */
-  --color-bg: #0a0e1a;
-  --color-surface: #0f172a;
-  --color-surface-hover: #1e293b;
-  --color-card: rgba(15, 23, 42, 0.65);
-  --color-card-hover: rgba(30, 41, 59, 0.75);
+  /* Core palette — deep cyber dark slate/black background with neon accents */
+  --color-bg: #060913;
+  --color-surface: #0a0f1d;
+  --color-surface-hover: #111827;
+  --color-card: rgba(10, 15, 29, 0.72);
+  --color-card-hover: rgba(17, 24, 39, 0.85);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(56, 189, 248, 0.35);
+  --color-border-hover: rgba(0, 240, 255, 0.4);
 
-  --color-cyan: #06b6d4;
+  /* Cyber Neon Accents */
+  --color-cyan: #00f0ff;
   --color-cyan-light: #38bdf8;
-  --color-purple: #8b5cf6;
-  --color-purple-light: #a855f7;
+  --color-blue: #3b82f6;
+  --color-purple: #a855f7;
+  --color-purple-light: #c084fc;
+  --color-pink: #ec4899;
+  --color-green: #10b981;
+  --color-emerald-neon: #00ff9d;
 
   --color-text: #f8fafc;
   --color-text-secondary: #e2e8f0;
@@ -32,12 +37,11 @@
   --radius-card: 20px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
-  --shadow-glow-cyan: 0 0 35px -8px rgba(6, 182, 212, 0.35);
-  --shadow-glow-purple: 0 0 35px -8px rgba(139, 92, 246, 0.35);
-
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-blob: blob 20s ease-in-out infinite;
+  --shadow-soft: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
+  --shadow-glow-cyan: 0 0 35px -8px rgba(0, 240, 255, 0.4);
+  --shadow-glow-purple: 0 0 35px -8px rgba(168, 85, 247, 0.4);
+  --shadow-glow-pink: 0 0 35px -8px rgba(236, 72, 153, 0.4);
+  --shadow-glow-green: 0 0 35px -8px rgba(16, 185, 129, 0.4);
 }
 
 @layer base {
@@ -63,22 +67,22 @@
 
   ::selection {
     background: var(--color-cyan);
-    color: #0a0e1a;
+    color: #060913;
   }
 
-  /* Custom subtle scrollbar */
+  /* Custom futuristic scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0e1a;
+    background: #060913;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #06b6d4, #8b5cf6);
+    background: linear-gradient(180deg, #00f0ff, #a855f7);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #38bdf8, #a855f7);
+    background: linear-gradient(180deg, #38bdf8, #ec4899);
   }
 
   /* Accessibility: respect user motion preferences */
@@ -95,7 +99,7 @@
 }
 
 @layer components {
-  /* Premium Glassmorphic Surface */
+  /* Futuristic Cyber-Glass Panel */
   .glass-panel {
     background: var(--color-card);
     border: 1px solid var(--color-border);
@@ -110,16 +114,51 @@
     border-color: var(--color-border-hover);
   }
 
-  /* High contrast text gradient */
+  /* Cyber Glow Borders */
+  .neon-border-cyan {
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 20px -5px rgba(0, 240, 255, 0.3);
+  }
+
+  .neon-border-purple {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 20px -5px rgba(168, 85, 247, 0.3);
+  }
+
+  .neon-border-pink {
+    border-color: rgba(236, 72, 153, 0.4);
+    box-shadow: 0 0 20px -5px rgba(236, 72, 153, 0.3);
+  }
+
+  .neon-border-green {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.3);
+  }
+
+  /* Futuristic text gradients */
   .text-gradient {
-    background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 40%, #a855f7 100%);
+    background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 35%, #a855f7 70%, #ec4899 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .text-gradient-cyan {
-    background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, #00ff9d 0%, #10b981 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -155,23 +194,50 @@
   }
 }
 
-@keyframes float {
+/* Keyframe animations for futuristic floating & pulsing */
+@keyframes float-slow {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
   }
 }
 
-@keyframes blob {
+@keyframes float-reverse {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
+    transform: translateY(0px);
   }
-  33% {
-    transform: translate(25px, -30px) scale(1.06);
+  50% {
+    transform: translateY(8px);
   }
-  66% {
-    transform: translate(-20px, 20px) scale(0.95);
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
   }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes circuit-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 6s ease-in-out infinite;
+}
+
+.animate-cyber-pulse {
+  animation: cyber-pulse 4s ease-in-out infinite;
 }
