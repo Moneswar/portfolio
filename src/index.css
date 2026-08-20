@@ -1,17 +1,17 @@
 /* ============================================================================
    index.css — global styles & design tokens
    Tailwind v4 CSS-first design system for Moneswar Sundareswaran's portfolio.
-   Futuristic Cyber-Tech Engineering HUD Core & Holographic Ecosystem.
+   Futuristic Cyber-Tech Engineering Command Center & Holographic HUD Core.
    ============================================================================ */
 @import "tailwindcss";
 
 @theme {
   /* Core palette — deep cyber dark slate/black background with neon accents */
   --color-bg: #030712;
-  --color-surface: #070d1e;
-  --color-surface-hover: #0e172e;
-  --color-card: rgba(7, 13, 30, 0.82);
-  --color-card-hover: rgba(14, 23, 46, 0.92);
+  --color-surface: #060b18;
+  --color-surface-hover: #0c1428;
+  --color-card: rgba(6, 11, 26, 0.85);
+  --color-card-hover: rgba(12, 20, 42, 0.95);
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-hover: rgba(0, 240, 255, 0.45);
 
@@ -117,7 +117,7 @@
     background: linear-gradient(
       180deg,
       rgba(0, 240, 255, 0.04) 50%,
-      rgba(0, 0, 0, 0.32) 51%
+      rgba(0, 0, 0, 0.35) 51%
     );
     background-size: 100% 4px;
   }
@@ -210,6 +210,18 @@
   }
 }
 
+@keyframes wave-flow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .animate-hud-spin {
   animation: hud-spin-slow 45s linear infinite;
 }
@@ -225,4 +237,8 @@
 .animate-dash-flow {
   stroke-dasharray: 4 6;
   animation: dash-flow 8s linear infinite;
+}
+
+.animate-wave-flow {
+  animation: wave-flow 16s ease-in-out infinite;
 }

@@ -14,6 +14,7 @@ import {
   FiBookOpen,
   FiAward,
   FiCheckCircle,
+  FiTerminal,
 } from "react-icons/fi";
 import {
   FaGithub,
@@ -59,7 +60,7 @@ const infoCards = [
   {
     icon: FiBookOpen,
     value: "BE Degree (CSD)",
-    label: "Kongu Engg College '27",
+    label: "Kongu Engineering College",
     color: "text-blue-400 border-blue-500/25 bg-blue-950/30",
   },
   {
@@ -89,9 +90,9 @@ const skillModules = [
     bgClass: "bg-[#05111b]/92 hover:bg-[#081a29]",
     textClass: "text-emerald-300",
     glowColor: "rgba(0, 255, 157, 0.45)",
-    desktopPos: "top-[-1rem] left-1/2 -translate-x-1/2",
-    path: "M 230 135 L 230 55",
-    nodeCoord: { cx: 230, cy: 55 },
+    desktopPos: "top-[-1.25rem] left-1/2 -translate-x-1/2",
+    path: "M 250 145 L 250 65",
+    nodeCoord: { cx: 250, cy: 65 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0 },
@@ -108,9 +109,9 @@ const skillModules = [
     bgClass: "bg-[#041220]/92 hover:bg-[#071c32]",
     textClass: "text-cyan-300",
     glowColor: "rgba(0, 240, 255, 0.45)",
-    desktopPos: "top-[40%] -left-[1.75rem] xl:-left-[2.25rem]",
-    path: "M 115 230 L 40 230",
-    nodeCoord: { cx: 40, cy: 230 },
+    desktopPos: "top-[40%] -left-[2.25rem] xl:-left-[2.75rem]",
+    path: "M 130 250 L 45 250",
+    nodeCoord: { cx: 45, cy: 250 },
     floatAnimation: {
       y: [0, 4, 0],
       transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
@@ -127,9 +128,9 @@ const skillModules = [
     bgClass: "bg-[#041124]/92 hover:bg-[#071b38]",
     textClass: "text-sky-300",
     glowColor: "rgba(56, 189, 248, 0.45)",
-    desktopPos: "top-[40%] -right-[1.75rem] xl:-right-[2.25rem]",
-    path: "M 345 230 L 420 230",
-    nodeCoord: { cx: 420, cy: 230 },
+    desktopPos: "top-[40%] -right-[2.25rem] xl:-right-[2.75rem]",
+    path: "M 370 250 L 455 250",
+    nodeCoord: { cx: 455, cy: 250 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
@@ -147,8 +148,8 @@ const skillModules = [
     textClass: "text-purple-300",
     glowColor: "rgba(168, 85, 247, 0.45)",
     desktopPos: "bottom-[0%] left-[2%] xl:left-[5%]",
-    path: "M 155 330 L 80 395",
-    nodeCoord: { cx: 80, cy: 395 },
+    path: "M 170 355 L 90 425",
+    nodeCoord: { cx: 90, cy: 425 },
     floatAnimation: {
       y: [0, 4, 0],
       transition: { duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
@@ -166,8 +167,8 @@ const skillModules = [
     textClass: "text-pink-300",
     glowColor: "rgba(236, 72, 153, 0.45)",
     desktopPos: "bottom-[0%] right-[2%] xl:right-[5%]",
-    path: "M 305 330 L 380 395",
-    nodeCoord: { cx: 380, cy: 395 },
+    path: "M 330 355 L 410 425",
+    nodeCoord: { cx: 410, cy: 425 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 2 },
@@ -177,19 +178,20 @@ const skillModules = [
 
 // Floating Supporting Tech Badges
 const techBadges = [
-  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[14%] left-[6%]" },
-  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[14%] right-[6%]" },
-  { icon: SiJavascript, name: "JavaScript", color: "#f59e0b", pos: "bottom-[24%] left-[2%]" },
-  { icon: SiMongodb, name: "MongoDB", color: "#22c55e", pos: "bottom-[24%] right-[2%]" },
-  { icon: FaGitAlt, name: "Git", color: "#f97316", pos: "top-[5%] left-[26%]" },
-  { icon: SiCplusplus, name: "C++", color: "#3b82f6", pos: "bottom-[5%] left-[45%]" },
+  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[12%] left-[4%]" },
+  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[12%] right-[4%]" },
+  { icon: SiJavascript, name: "JavaScript", color: "#f59e0b", pos: "bottom-[22%] left-[1%]" },
+  { icon: SiMongodb, name: "MongoDB", color: "#22c55e", pos: "bottom-[22%] right-[1%]" },
+  { icon: FaGitAlt, name: "Git", color: "#f97316", pos: "top-[2%] left-[22%]" },
+  { icon: SiCplusplus, name: "C++", color: "#3b82f6", pos: "bottom-[3%] left-[46%]" },
 ];
 
 /**
  * Hero
- * Futuristic Engineering Command Ecosystem & Holographic HUD Showcase.
- * Perfectly balanced 48/52 desktop grid, zero viewport clipping, proper navbar offset,
- * compact factual metric cards, and verified career highlights.
+ * Futuristic Engineering Command Center & Holographic HUD Showcase.
+ * Features an aligned 45/55 desktop grid balance, upper-right IDE code panel,
+ * lower-right developer laptop silhouette, central circular profile core,
+ * 5 holographic skill modules, 4 factual metric cards, and 3 primary CTAs.
  */
 const Hero = () => {
   const typedRole = useTypewriter(roles, { pause: 1600 });
@@ -202,9 +204,9 @@ const Hero = () => {
     >
       <AnimatedBackground />
 
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-12 xl:px-16 relative z-10">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[48fr_52fr] lg:gap-8 xl:gap-12">
-          {/* Left Column (48%): Headline, Chips, Bio, Info Cards, Buttons & Socials */}
+      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 lg:px-12 xl:px-16 relative z-10">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[44fr_56fr] lg:gap-8 xl:gap-12">
+          {/* Left Column (44%): Status, Headline, Chips, Bio, Info Cards, Buttons & Socials */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -234,9 +236,9 @@ const Hero = () => {
             >
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 bg-clip-text text-transparent">
-                Moneswar
+                Moneswar.
               </span>
-              .<br />
+              <br />
               Building practical{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 software
@@ -266,7 +268,7 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* Role Chips */}
+            {/* 4 Role Chips */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -394,45 +396,89 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column (52%): Main Holographic Engineering Core & Skill Ecosystem */}
+          {/* Right Column (56%): Main Holographic Engineering Core, Code Panel, Laptop & Orbit System */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
-            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[460px] lg:max-w-none"
+            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[500px] lg:max-w-none"
           >
             {/* Central Engineering Command HUD Container */}
-            <div className="relative flex items-center justify-center h-[340px] w-[340px] sm:h-[390px] sm:w-[390px] lg:h-[430px] lg:w-[430px] xl:h-[460px] xl:w-[460px]">
+            <div className="relative flex items-center justify-center h-[360px] w-[360px] sm:h-[410px] sm:w-[410px] lg:h-[450px] lg:w-[450px] xl:h-[500px] xl:w-[500px]">
+              {/* Upper-Right Floating IDE Code Panel (Decorative) */}
+              <div className="hidden xl:block absolute -top-8 -right-4 z-10 w-52 rounded-xl border border-cyan-500/25 bg-[#050a18]/85 p-2.5 backdrop-blur-md shadow-lg shadow-cyan-500/10 pointer-events-none opacity-85">
+                <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
+                  <div className="flex items-center gap-1">
+                    <span className="h-2 w-2 rounded-full bg-rose-500/80" />
+                    <span className="h-2 w-2 rounded-full bg-amber-500/80" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <div className="flex items-center gap-1 font-mono text-[8px] text-cyan-400">
+                    <FiTerminal className="text-[9px]" />
+                    <span>engineer.js</span>
+                  </div>
+                </div>
+                <div className="font-mono text-[8.5px] leading-relaxed text-slate-300/90">
+                  <span className="text-purple-400">const</span>{" "}
+                  <span className="text-cyan-300">dev</span> = &#123;<br />
+                  &nbsp;&nbsp;name: <span className="text-emerald-300">"Moneswar"</span>,<br />
+                  &nbsp;&nbsp;degree: <span className="text-amber-300">"BE (CSD)"</span>,<br />
+                  &nbsp;&nbsp;status: <span className="text-cyan-300">"Open to Work"</span><br />
+                  &#125;;
+                </div>
+              </div>
+
+              {/* Lower-Right Developer Workspace / Laptop Silhouette Visual */}
+              <div className="hidden xl:block absolute -bottom-6 -right-6 z-10 w-44 pointer-events-none opacity-70">
+                <div className="relative rounded-t-lg border border-purple-500/25 bg-[#070b1c]/90 p-1.5 shadow-md backdrop-blur-md">
+                  <div className="h-16 rounded bg-[#02050e] p-1.5 flex flex-col gap-1 border border-white/5">
+                    <div className="flex items-center justify-between">
+                      <span className="h-1 w-6 rounded bg-cyan-400/60" />
+                      <span className="h-1 w-3 rounded bg-purple-400/60" />
+                    </div>
+                    <div className="h-0.5 w-16 rounded bg-slate-700/60" />
+                    <div className="h-0.5 w-20 rounded bg-slate-700/60" />
+                    <div className="h-0.5 w-12 rounded bg-emerald-400/50" />
+                    <div className="mt-auto flex justify-between items-center text-[7px] font-mono text-cyan-400/80">
+                      <span>CONSOLE</span>
+                      <span className="text-emerald-400">● 100%</span>
+                    </div>
+                  </div>
+                  {/* Laptop Base */}
+                  <div className="h-1.5 w-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-b mt-0.5 border-t border-white/10" />
+                </div>
+              </div>
+
               {/* SVG HUD Circuit Architecture & Radial Orbit Track Lines (Desktop Only) */}
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 hidden lg:block h-full w-full"
-                viewBox="0 0 460 460"
+                viewBox="0 0 500 500"
                 fill="none"
               >
                 {/* Concentric Rotating HUD Orbit Rings */}
                 <circle
-                  cx="230"
-                  cy="230"
-                  r="135"
+                  cx="250"
+                  cy="250"
+                  r="145"
                   stroke="rgba(0, 240, 255, 0.22)"
                   strokeWidth="1.2"
                   strokeDasharray="6 8"
                   className="animate-hud-spin"
                 />
                 <circle
-                  cx="230"
-                  cy="230"
-                  r="180"
+                  cx="250"
+                  cy="250"
+                  r="195"
                   stroke="rgba(168, 85, 247, 0.18)"
                   strokeWidth="1"
                   strokeDasharray="4 12"
                   className="animate-hud-spin-reverse"
                 />
                 <circle
-                  cx="230"
-                  cy="230"
-                  r="215"
+                  cx="250"
+                  cy="250"
+                  r="235"
                   stroke="rgba(56, 189, 248, 0.12)"
                   strokeWidth="1"
                   strokeDasharray="2 10"
@@ -440,34 +486,34 @@ const Hero = () => {
 
                 {/* HUD Cardinal Axis Crosshairs */}
                 <line
-                  x1="230"
+                  x1="250"
                   y1="25"
-                  x2="230"
+                  x2="250"
                   y2="55"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="230"
-                  y1="405"
-                  x2="230"
-                  y2="435"
+                  x1="250"
+                  y1="445"
+                  x2="250"
+                  y2="475"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
                   x1="25"
-                  y1="230"
+                  y1="250"
                   x2="55"
-                  y2="230"
+                  y2="250"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="405"
-                  y1="230"
-                  x2="435"
-                  y2="230"
+                  x1="445"
+                  y1="250"
+                  x2="475"
+                  y2="250"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
@@ -548,7 +594,7 @@ const Hero = () => {
                 className="relative z-20 group"
               >
                 {/* Outer Circular Neon Shield Frame */}
-                <div className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-60 lg:w-60 xl:h-68 xl:w-68 rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_40px_-8px_rgba(0,240,255,0.4)] transition-all duration-500 group-hover:shadow-[0_0_55px_-5px_rgba(0,240,255,0.6)]">
+                <div className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64 xl:h-72 xl:w-72 rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_42px_-8px_rgba(0,240,255,0.4)] transition-all duration-500 group-hover:shadow-[0_0_58px_-5px_rgba(0,240,255,0.6)]">
                   {/* Inner Circular Canvas */}
                   <div className="relative h-full w-full overflow-hidden rounded-full bg-[#050914]">
                     <img
