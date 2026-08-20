@@ -2,7 +2,7 @@
 // resumeData.js
 // Single source of truth for all portfolio content.
 // Accurately aligned with Moneswar Sundareswaran's background, education,
-// projects, skills, and certifications.
+// projects, skills, certifications, and academic training.
 // ============================================================================
 
 export const personalInfo = {
@@ -176,20 +176,46 @@ export const education = [
 export const certifications = [
   {
     id: "cert-1",
+    type: "certification",
+    badge: "CERTIFICATION",
     title: "NPTEL Online Certification",
-    course: "Database Management System",
-    provider: "NPTEL / IIT Kharagpur",
-    issuer: "NPTEL (National Programme on Technology Enhanced Learning)",
+    course: "Introduction To Industry 4.0 And Industrial Internet Of Things",
+    provider: "NPTEL (National Programme on Technology Enhanced Learning)",
     year: "2024",
+    statusText: "Verified Academic Credential",
     credentialUrl: null,
   },
   {
     id: "cert-2",
+    type: "certification",
+    badge: "CERTIFICATION",
     title: "Oracle Java Foundations Certification",
     course: "Java Foundations",
     provider: "Oracle",
-    issuer: "Oracle",
     year: "2024",
+    statusText: "Verified Academic Credential",
+    credentialUrl: null,
+  },
+  {
+    id: "course-1",
+    type: "course",
+    badge: "ONE-CREDIT COURSE",
+    title: "Prompt Engineering",
+    course: "Prompt Engineering",
+    provider: "Academic Coursework",
+    year: null,
+    statusText: "Completed Academic Course",
+    credentialUrl: null,
+  },
+  {
+    id: "course-2",
+    type: "course",
+    badge: "ONE-CREDIT COURSE",
+    title: "JetBot AI",
+    course: "JetBot AI",
+    provider: "Academic Coursework",
+    year: null,
+    statusText: "Completed Academic Course",
     credentialUrl: null,
   },
 ];
