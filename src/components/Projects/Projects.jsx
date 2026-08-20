@@ -6,8 +6,9 @@ import SectionHeading from "../shared/SectionHeading";
 
 /**
  * ProjectShowcaseCard
- * Large-format recruiter showcase layout with 42% info / 58% image split.
- * Features uncropped, high-resolution visual proof of real work (FarmDirect live web UI & Smart Healthcare 2x2 collage).
+ * Premium cinematic project showcase layout.
+ * Directly integrates the real visual asset (FarmDirect web UI & Smart Healthcare 2x2 collage)
+ * seamlessly into the dark card with multi-layer gradient blending, ambient lighting, and zero harsh borders.
  */
 const ProjectShowcaseCard = ({ project, index }) => {
   const isHealthcare = project.id === "smart-healthcare";
@@ -18,22 +19,21 @@ const ProjectShowcaseCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.08 }}
       transition={{ duration: 0.65, delay: index * 0.1 }}
-      className="glass-panel relative overflow-hidden rounded-3xl border border-white/15 bg-[#0a0f1d]/90 p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/40"
+      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#080d18] shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-cyan-500/30"
     >
-      {/* Ambient background glow */}
+      {/* Cinematic Ambient Glow Behind Card */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-cyan-500/[0.08] blur-3xl"
+        className="pointer-events-none absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.07] blur-3xl transition-opacity duration-700 group-hover:opacity-100"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -left-32 h-[28rem] w-[28rem] rounded-full bg-purple-500/[0.08] blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -left-32 h-[30rem] w-[30rem] rounded-full bg-purple-500/[0.07] blur-3xl transition-opacity duration-700 group-hover:opacity-100"
       />
 
-      {/* 42% Info / 58% Image Balanced Grid */}
-      <div className="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-[42fr_58fr] lg:gap-12 xl:gap-14">
-        {/* Left Column (42%): Project Information */}
-        <div className="flex flex-col justify-between py-1">
+      <div className="relative z-10 grid grid-cols-1 items-stretch lg:grid-cols-12 min-h-[560px] lg:min-h-[600px] xl:min-h-[640px]">
+        {/* Left Column (40–42% on desktop): Project Information */}
+        <div className="relative z-20 flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 lg:col-span-5 bg-gradient-to-b from-[#080d18] via-[#080d18]/95 to-[#080d18] lg:bg-transparent">
           <div>
             {/* Category Badge */}
             <div className="mb-4">
@@ -126,42 +126,65 @@ const ProjectShowcaseCard = ({ project, index }) => {
           </div>
         </div>
 
-        {/* Right Column (58%): Large Project Image Showcase */}
-        <div className="flex w-full items-center justify-center">
-          <div className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-[#060a14] p-3 sm:p-5 lg:p-6 shadow-2xl transition-all duration-500 hover:border-cyan-500/40">
-            {/* Subtle background ambient spotlight */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 opacity-30 pointer-events-none"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.18), transparent 70%)",
-              }}
+        {/* Right Column (58–60% on desktop): Immersive Cinematic Visual Showcase */}
+        <div className="relative flex items-center justify-center overflow-hidden lg:col-span-7 min-h-[380px] sm:min-h-[480px] lg:min-h-[560px] xl:min-h-[640px] bg-[#060a12]/80">
+          {/* Subtle Radial Ambient Spotlight directly behind the hardware */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 55% 50%, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.08), transparent 72%)",
+            }}
+          />
+
+          {/* Interactive Link wrapper for the visual */}
+          <Link
+            to={project.detailsPath}
+            aria-label={`View details for ${project.title}`}
+            className="relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-6 lg:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-2xl"
+          >
+            <img
+              src={project.previewImage}
+              alt={project.imageAlt || project.title}
+              className={`w-full max-w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02] filter contrast-[1.02] ${
+                isHealthcare
+                  ? "max-h-[500px] sm:max-h-[580px] lg:max-h-[620px] xl:max-h-[660px]"
+                  : "max-h-[360px] sm:max-h-[440px] lg:max-h-[500px] xl:max-h-[540px]"
+              }`}
+              loading="lazy"
             />
+          </Link>
 
-            <Link
-              to={project.detailsPath}
-              className="relative z-10 block w-full overflow-hidden rounded-xl bg-slate-950/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <img
-                src={project.previewImage}
-                alt={project.imageAlt || project.title}
-                className={`w-full h-auto ${
-                  isHealthcare
-                    ? "max-h-[560px] sm:max-h-[640px] lg:max-h-[720px] object-contain"
-                    : "max-h-[380px] sm:max-h-[460px] lg:max-h-[520px] object-contain"
-                } rounded-lg transition-transform duration-500 group-hover:scale-[1.015]`}
-                loading="lazy"
-              />
+          {/* Cinematic Blend Layer 1: Horizontal gradient from info side over image */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+            style={{
+              background:
+                "linear-gradient(90deg, #080d18 0%, rgba(8, 13, 24, 0.85) 12%, rgba(8, 13, 24, 0.2) 35%, rgba(8, 13, 24, 0) 70%)",
+            }}
+          />
 
-              {/* Corner badge indicating real visual */}
-              <div className="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-slate-950/85 px-3.5 py-1.5 text-[11px] font-mono font-medium text-cyan-300 backdrop-blur-md shadow-md">
-                {isHealthcare
-                  ? "Exact 4-View Prototype Collage"
-                  : "Real Application Preview"}
-              </div>
-            </Link>
-          </div>
+          {/* Cinematic Blend Layer 2: Soft Top & Bottom Vignette */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-10"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(8, 13, 24, 0.5) 0%, transparent 12%, transparent 88%, rgba(8, 13, 24, 0.6) 100%)",
+            }}
+          />
+
+          {/* Cinematic Blend Layer 3: Soft Right Edge Falloff */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 hidden lg:block"
+            style={{
+              background:
+                "linear-gradient(270deg, #080d18 0%, transparent 100%)",
+            }}
+          />
         </div>
       </div>
     </motion.article>
@@ -183,7 +206,7 @@ const Projects = () => {
           subtitle="Real deployed web applications and authentic physical hardware prototypes."
         />
 
-        <div className="flex flex-col gap-14 sm:gap-18">
+        <div className="flex flex-col gap-14 sm:gap-20">
           {projects.map((project, index) => (
             <ProjectShowcaseCard
               key={project.id}
