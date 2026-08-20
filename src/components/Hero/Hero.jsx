@@ -82,9 +82,9 @@ const skillModules = [
     bgClass: "bg-[#05111b]/92 hover:bg-[#081a29]",
     textClass: "text-emerald-300",
     glowColor: "rgba(0, 255, 157, 0.45)",
-    desktopPos: "top-[-1.25rem] left-1/2 -translate-x-1/2",
-    path: "M 310 175 L 310 85",
-    nodeCoord: { cx: 310, cy: 85 },
+    desktopPos: "top-[-1.5rem] left-1/2 -translate-x-1/2",
+    path: "M 320 180 L 320 85",
+    nodeCoord: { cx: 320, cy: 85 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0 },
@@ -101,9 +101,9 @@ const skillModules = [
     bgClass: "bg-[#041220]/92 hover:bg-[#071c32]",
     textClass: "text-cyan-300",
     glowColor: "rgba(0, 240, 255, 0.45)",
-    desktopPos: "top-[40%] -left-[2.75rem] xl:-left-[3.5rem]",
-    path: "M 160 310 L 60 310",
-    nodeCoord: { cx: 60, cy: 310 },
+    desktopPos: "top-[40%] -left-[3rem] xl:-left-[3.75rem]",
+    path: "M 165 320 L 60 320",
+    nodeCoord: { cx: 60, cy: 320 },
     floatAnimation: {
       y: [0, 4, 0],
       transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
@@ -120,9 +120,9 @@ const skillModules = [
     bgClass: "bg-[#041124]/92 hover:bg-[#071b38]",
     textClass: "text-sky-300",
     glowColor: "rgba(56, 189, 248, 0.45)",
-    desktopPos: "top-[40%] -right-[2.75rem] xl:-right-[3.5rem]",
-    path: "M 460 310 L 560 310",
-    nodeCoord: { cx: 560, cy: 310 },
+    desktopPos: "top-[40%] -right-[3rem] xl:-right-[3.75rem]",
+    path: "M 475 320 L 580 320",
+    nodeCoord: { cx: 580, cy: 320 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
@@ -140,8 +140,8 @@ const skillModules = [
     textClass: "text-purple-300",
     glowColor: "rgba(168, 85, 247, 0.45)",
     desktopPos: "bottom-[1%] left-[2%] xl:left-[4%]",
-    path: "M 215 435 L 120 515",
-    nodeCoord: { cx: 120, cy: 515 },
+    path: "M 220 450 L 125 535",
+    nodeCoord: { cx: 125, cy: 535 },
     floatAnimation: {
       y: [0, 4, 0],
       transition: { duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
@@ -159,8 +159,8 @@ const skillModules = [
     textClass: "text-pink-300",
     glowColor: "rgba(236, 72, 153, 0.45)",
     desktopPos: "bottom-[1%] right-[2%] xl:right-[4%]",
-    path: "M 405 435 L 500 515",
-    nodeCoord: { cx: 500, cy: 515 },
+    path: "M 420 450 L 515 535",
+    nodeCoord: { cx: 515, cy: 535 },
     floatAnimation: {
       y: [0, -4, 0],
       transition: { duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 2 },
@@ -183,7 +183,7 @@ const techBadges = [
  * Engineering / Developer Command Center Portfolio Hero.
  * Matches the primary visual reference design with a balanced 43/57 desktop split,
  * 4-line typography composition, clean degree line, compact role chips, 4 equal-height metric cards,
- * enlarged 335px circular portrait core, 5 interconnected skill modules, floating IDE panel,
+ * enlarged 340px circular portrait core, 5 interconnected skill modules, floating IDE panel,
  * clearly visible lower-right developer laptop visual, and flowing bottom digital terrain wave.
  */
 const Hero = () => {
@@ -388,15 +388,15 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column (57%): Unified Relative Holographic Engineering Ecosystem Container (620x620 Canvas) */}
+          {/* Right Column (57%): Unified Relative Holographic Engineering Ecosystem Container (640x640 Canvas) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
-            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[620px] lg:max-w-none"
+            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[640px] lg:max-w-none"
           >
-            {/* Single Relative Coordinate Canvas (620x620) */}
-            <div className="relative flex items-center justify-center h-[390px] w-[390px] sm:h-[460px] sm:w-[460px] lg:h-[530px] lg:w-[530px] xl:h-[610px] xl:w-[610px]">
+            {/* Single Relative Coordinate Canvas (640x640) */}
+            <div className="relative flex items-center justify-center h-[400px] w-[400px] sm:h-[480px] sm:w-[480px] lg:h-[550px] lg:w-[550px] xl:h-[630px] xl:w-[630px]">
               {/* Upper-Right Floating IDE Code Panel */}
               <div className="hidden xl:block absolute -top-5 -right-1 z-10 w-56 rounded-xl border border-cyan-500/30 bg-[#050a18]/90 p-2.5 backdrop-blur-md shadow-lg shadow-cyan-500/10 pointer-events-none opacity-90 animate-float-gentle">
                 <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
@@ -423,7 +423,7 @@ const Hero = () => {
               </div>
 
               {/* Lower-Right Developer Workspace / Laptop Visual (Clearly Visible) */}
-              <div className="hidden xl:block absolute bottom-1 right-1 z-10 w-48 pointer-events-none opacity-80 animate-float-reverse-gentle">
+              <div className="hidden xl:block absolute bottom-1 right-1 z-10 w-48 pointer-events-none opacity-85 animate-float-reverse-gentle">
                 <div className="relative rounded-t-lg border border-purple-500/35 bg-[#070b1c]/95 p-1.5 shadow-md backdrop-blur-md">
                   <div className="h-16 rounded bg-[#02050e] p-1.5 flex flex-col gap-1 border border-white/5">
                     <div className="flex items-center justify-between">
@@ -447,68 +447,68 @@ const Hero = () => {
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 hidden lg:block h-full w-full"
-                viewBox="0 0 620 620"
+                viewBox="0 0 640 640"
                 fill="none"
               >
                 {/* Concentric Rotating HUD Orbit Rings */}
                 <circle
-                  cx="310"
-                  cy="310"
-                  r="185"
-                  stroke="rgba(0, 240, 255, 0.24)"
+                  cx="320"
+                  cy="320"
+                  r="190"
+                  stroke="rgba(0, 240, 255, 0.28)"
                   strokeWidth="1.2"
                   strokeDasharray="6 8"
                   className="animate-hud-spin"
                 />
                 <circle
-                  cx="310"
-                  cy="310"
-                  r="245"
-                  stroke="rgba(168, 85, 247, 0.2)"
+                  cx="320"
+                  cy="320"
+                  r="255"
+                  stroke="rgba(168, 85, 247, 0.22)"
                   strokeWidth="1"
                   strokeDasharray="4 12"
                   className="animate-hud-spin-reverse"
                 />
                 <circle
-                  cx="310"
-                  cy="310"
-                  r="290"
-                  stroke="rgba(56, 189, 248, 0.12)"
+                  cx="320"
+                  cy="320"
+                  r="305"
+                  stroke="rgba(56, 189, 248, 0.15)"
                   strokeWidth="1"
                   strokeDasharray="2 10"
                 />
 
                 {/* HUD Cardinal Axis Crosshairs */}
                 <line
-                  x1="310"
-                  y1="25"
-                  x2="310"
+                  x1="320"
+                  y1="20"
+                  x2="320"
                   y2="70"
-                  stroke="rgba(0, 240, 255, 0.4)"
+                  stroke="rgba(0, 240, 255, 0.45)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="310"
-                  y1="550"
-                  x2="310"
-                  y2="595"
-                  stroke="rgba(0, 240, 255, 0.4)"
+                  x1="320"
+                  y1="570"
+                  x2="320"
+                  y2="620"
+                  stroke="rgba(0, 240, 255, 0.45)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="25"
-                  y1="310"
+                  x1="20"
+                  y1="320"
                   x2="70"
-                  y2="310"
-                  stroke="rgba(0, 240, 255, 0.4)"
+                  y2="320"
+                  stroke="rgba(0, 240, 255, 0.45)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="550"
-                  y1="310"
-                  x2="595"
-                  y2="310"
-                  stroke="rgba(0, 240, 255, 0.4)"
+                  x1="570"
+                  y1="320"
+                  x2="620"
+                  y2="320"
+                  stroke="rgba(0, 240, 255, 0.45)"
                   strokeWidth="1.5"
                 />
 
@@ -521,15 +521,15 @@ const Hero = () => {
                       <path
                         d={mod.path}
                         stroke={mod.color}
-                        strokeWidth={isHovered ? "2.5" : "1.2"}
-                        strokeOpacity={isHovered ? "0.95" : "0.35"}
+                        strokeWidth={isHovered ? "2.5" : "1.4"}
+                        strokeOpacity={isHovered ? "0.95" : "0.45"}
                         className="animate-dash-flow transition-all duration-300"
                       />
                       {/* Interface Node Point */}
                       <circle
                         cx={mod.nodeCoord.cx}
                         cy={mod.nodeCoord.cy}
-                        r={isHovered ? "4" : "2.8"}
+                        r={isHovered ? "4.5" : "3"}
                         fill={mod.color}
                         className="transition-all duration-300"
                       />
@@ -537,10 +537,10 @@ const Hero = () => {
                       <circle
                         cx={mod.nodeCoord.cx}
                         cy={mod.nodeCoord.cy}
-                        r={isHovered ? "8" : "5"}
+                        r={isHovered ? "8.5" : "5.5"}
                         stroke={mod.color}
                         strokeWidth="1"
-                        strokeOpacity={isHovered ? "0.85" : "0.4"}
+                        strokeOpacity={isHovered ? "0.85" : "0.45"}
                         className="animate-ping"
                         style={{ animationDuration: "3.5s" }}
                       />
@@ -564,7 +564,7 @@ const Hero = () => {
                       key={badge.name}
                       animate={{
                         y: idx % 2 === 0 ? [0, -5, 0] : [0, 5, 0],
-                        opacity: [0.65, 0.95, 0.65],
+                        opacity: [0.7, 1, 0.7],
                       }}
                       transition={{
                         duration: 4 + idx * 0.5,
@@ -581,14 +581,14 @@ const Hero = () => {
                 })}
               </div>
 
-              {/* Central Large Circular Profile Core (Diameter ~335px on desktop) */}
+              {/* Central Large Circular Profile Core (Diameter ~340px on desktop) */}
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-20 group"
               >
                 {/* Outer Circular Neon Shield Frame */}
-                <div className="relative h-56 w-56 sm:h-64 sm:w-64 lg:h-76 lg:w-76 xl:h-[335px] xl:w-[335px] rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_48px_-8px_rgba(0,240,255,0.48)] transition-all duration-500 group-hover:shadow-[0_0_65px_-5px_rgba(0,240,255,0.7)]">
+                <div className="relative h-56 w-56 sm:h-64 sm:w-64 lg:h-76 lg:w-76 xl:h-[340px] xl:w-[340px] rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_50px_-8px_rgba(0,240,255,0.5)] transition-all duration-500 group-hover:shadow-[0_0_68px_-5px_rgba(0,240,255,0.7)]">
                   {/* Inner Circular Canvas */}
                   <div className="relative h-full w-full overflow-hidden rounded-full bg-[#050914]">
                     <img
