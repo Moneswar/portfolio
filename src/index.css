@@ -1,24 +1,29 @@
 /* ============================================================================
    index.css — global styles & design tokens
-   Tailwind v4 uses CSS-first config: tokens are declared inside @theme and
-   Tailwind auto-generates utilities from them (e.g. bg-bg, text-cyan,
-   font-display). This keeps the whole visual system in one readable place.
+   Tailwind v4 CSS-first design system for Moneswar Sundareswaran's portfolio.
+   Focused on clean visual hierarchy, dark glassmorphism, and recruiter appeal.
    ============================================================================ */
 @import "tailwindcss";
 
 @theme {
-  /* Core palette — premium dark, restrained accents */
-  --color-bg: #0b1120;
-  --color-surface: #111827;
-  --color-card: rgba(255, 255, 255, 0.06);
+  /* Core palette — deep dark slate background, refined cyan & purple accents */
+  --color-bg: #0a0e1a;
+  --color-surface: #0f172a;
+  --color-surface-hover: #1e293b;
+  --color-card: rgba(15, 23, 42, 0.65);
+  --color-card-hover: rgba(30, 41, 59, 0.75);
   --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(56, 189, 248, 0.35);
 
   --color-cyan: #06b6d4;
+  --color-cyan-light: #38bdf8;
   --color-purple: #8b5cf6;
-  --color-highlight: #38bdf8;
+  --color-purple-light: #a855f7;
 
   --color-text: #f8fafc;
+  --color-text-secondary: #e2e8f0;
   --color-text-muted: #94a3b8;
+  --color-text-dim: #64748b;
 
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -27,22 +32,23 @@
   --radius-card: 20px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 20px 60px -20px rgba(0, 0, 0, 0.5);
-  --shadow-glow-cyan: 0 0 40px -10px rgba(6, 182, 212, 0.35);
-  --shadow-glow-purple: 0 0 40px -10px rgba(139, 92, 246, 0.35);
+  --shadow-soft: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+  --shadow-glow-cyan: 0 0 35px -8px rgba(6, 182, 212, 0.35);
+  --shadow-glow-purple: 0 0 35px -8px rgba(139, 92, 246, 0.35);
 
   --animate-float: float 6s ease-in-out infinite;
-  --animate-blob: blob 18s ease-in-out infinite;
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-blob: blob 20s ease-in-out infinite;
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
+    box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
@@ -50,41 +56,70 @@
     color: var(--color-text);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    line-height: 1.6;
   }
 
   ::selection {
     background: var(--color-cyan);
-    color: var(--color-bg);
+    color: #0a0e1a;
   }
 
-  /* Slim custom scrollbar to match the premium aesthetic */
+  /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-bg);
+    background: #0a0e1a;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--color-cyan), var(--color-purple));
+    background: linear-gradient(180deg, #06b6d4, #8b5cf6);
     border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #38bdf8, #a855f7);
+  }
+
+  /* Accessibility: respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer components {
-  /* Reusable glass-card surface used across every section */
+  /* Premium Glassmorphic Surface */
   .glass-panel {
     background: var(--color-card);
     border: 1px solid var(--color-border);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Gradient text used for emphasis words in headings */
+  .glass-panel:hover {
+    border-color: var(--color-border-hover);
+  }
+
+  /* High contrast text gradient */
   .text-gradient {
-    background: linear-gradient(90deg, var(--color-cyan), var(--color-purple));
+    background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 40%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -92,15 +127,27 @@
 
   .section-heading {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
 
+  /* Responsive Container */
   .container-px {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
-  @media (min-width: 768px) {
+
+  @media (min-width: 640px) {
+    .container-px {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .container-px {
       padding-left: 3rem;
       padding-right: 3rem;
@@ -109,17 +156,22 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-16px); }
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes blob {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -40px) scale(1.08); }
-  66% { transform: translate(-20px, 25px) scale(0.94); }
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(25px, -30px) scale(1.06);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
 }

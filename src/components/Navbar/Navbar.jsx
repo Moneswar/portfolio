@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
-import { navLinks, personalInfo } from "../../data/resumeData";
+import { navLinks } from "../../data/resumeData";
 import useActiveSection from "../../hooks/useActiveSection";
 
 const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
 
 /**
  * Navbar
- * Sticky top nav that gains a glass background after the user scrolls
- * past the hero, highlights the active section with a sliding underline,
- * and collapses into a full-screen mobile menu below md.
+ * Sticky top navigation bar with active section indicator and responsive mobile drawer.
  */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,14 +16,18 @@ const Navbar = () => {
   const activeId = useActiveSection(sectionIds);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent body scroll when mobile menu is active
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -36,19 +38,29 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "border-b border-(--color-border) bg-(--color-bg)/80 backdrop-blur-xl" : "bg-transparent"
+        scrolled
+          ? "border-b border-white/10 bg-[#0a0e1a]/85 backdrop-blur-xl shadow-lg shadow-black/20"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="container-px mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between py-4">
-        {/* Logo — initials mark */}
-        <a href="#home" className="group flex items-center gap-2 font-display text-lg font-semibold">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-(--color-cyan) to-(--color-purple) text-sm font-bold text-(--color-bg) transition-transform duration-300 group-hover:rotate-6">
+      <nav
+        aria-label="Main Navigation"
+        className="container-px mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between"
+      >
+        {/* Brand Mark */}
+        <a
+          href="#home"
+          className="group flex items-center gap-2.5 font-display text-base sm:text-lg font-bold tracking-tight text-white focus-visible:outline-2 focus-visible:outline-(--color-cyan) rounded-lg"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-(--color-cyan) to-(--color-purple) text-sm font-bold text-slate-950 shadow-md transition-transform duration-300 group-hover:scale-105">
             MS
           </span>
-          <span className="hidden sm:inline">Moneswar<span className="text-(--color-cyan)">.</span></span>
+          <span className="inline-block">
+            Moneswar<span className="text-(--color-cyan)">.</span>
+          </span>
         </a>
 
-        {/* Desktop links */}
+        {/* Desktop Navigation Links */}
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const id = link.href.replace("#", "");
@@ -57,15 +69,17 @@ const Navbar = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                    isActive ? "text-(--color-text)" : "text-(--color-text-muted) hover:text-(--color-text)"
+                  className={`relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:outline-2 focus-visible:outline-(--color-cyan) ${
+                    isActive
+                      ? "text-white font-semibold"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.span
-                      layoutId="navbar-underline"
-                      className="absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full bg-gradient-to-r from-(--color-cyan) to-(--color-purple)"
+                      layoutId="navbar-active-underline"
+                      className="absolute inset-x-2 -bottom-1 h-[2.5px] rounded-full bg-gradient-to-r from-(--color-cyan) via-(--color-cyan-light) to-(--color-purple)"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -75,54 +89,68 @@ const Navbar = () => {
           })}
         </ul>
 
-        <div className="hidden md:block">
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-3">
           <a
             href="#contact"
-            className="rounded-full bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-5 py-2.5 text-sm font-semibold text-(--color-bg) transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-4.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-md shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/35 hover:-translate-y-0.5"
           >
             Let's Talk
           </a>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile Hamburger Button */}
         <button
+          type="button"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((prev) => !prev)}
-          className="glass-panel flex h-10 w-10 items-center justify-center rounded-xl text-xl md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-xl text-slate-200 transition-colors hover:border-white/20 hover:text-white focus-visible:outline-2 focus-visible:outline-(--color-cyan) md:hidden"
         >
           {mobileOpen ? <HiX /> : <HiMenu />}
         </button>
       </nav>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-(--color-border) bg-(--color-bg)/95 backdrop-blur-xl md:hidden"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-b border-white/10 bg-[#0a0e1a]/98 backdrop-blur-2xl md:hidden shadow-2xl"
           >
-            <ul className="container-px mx-auto flex max-w-6xl flex-col gap-1 py-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={handleLinkClick}
-                    className="block rounded-lg px-3 py-3 text-base font-medium text-(--color-text-muted) transition-colors hover:bg-white/5 hover:text-(--color-text)"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li className="pt-2">
+            <ul className="container-px mx-auto flex flex-col gap-1.5 py-5">
+              {navLinks.map((link) => {
+                const id = link.href.replace("#", "");
+                const isActive = activeId === id;
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={handleLinkClick}
+                      className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${
+                        isActive
+                          ? "bg-white/[0.08] text-cyan-300 font-semibold border border-cyan-500/30"
+                          : "text-slate-300 hover:bg-white/[0.04] hover:text-white"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && (
+                        <span className="h-2 w-2 rounded-full bg-(--color-cyan)" />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+              <li className="pt-3">
                 <a
-                  href={`mailto:${personalInfo.email}`}
+                  href="#contact"
                   onClick={handleLinkClick}
-                  className="block rounded-lg bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-3 py-3 text-center text-base font-semibold text-(--color-bg)"
+                  className="flex items-center justify-center rounded-xl bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-4 py-3 text-center text-sm font-bold text-slate-950 shadow-md"
                 >
-                  Let's Talk
+                  Contact Me
                 </a>
               </li>
             </ul>

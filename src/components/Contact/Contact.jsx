@@ -8,22 +8,37 @@ import SectionHeading from "../shared/SectionHeading";
 import Button from "../shared/Button";
 
 const contactCards = [
-  { icon: HiOutlineMail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-  { icon: HiOutlinePhone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, "")}` },
-  { icon: HiOutlineLocationMarker, label: "Location", value: personalInfo.location, href: null },
+  {
+    icon: HiOutlineMail,
+    label: "Email",
+    value: personalInfo.email,
+    href: `mailto:${personalInfo.email}`,
+  },
+  {
+    icon: HiOutlinePhone,
+    label: "Phone",
+    value: personalInfo.phone,
+    href: `tel:${personalInfo.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: HiOutlineLocationMarker,
+    label: "Location",
+    value: personalInfo.location,
+    href: null,
+  },
 ];
 
 /**
  * Contact
- * Info cards (email/phone/location), social links, and a lightweight
- * message form. The form composes a mailto: link with the filled-in
- * details rather than depending on a third-party email API key that
- * isn't available in this build — keeping it fully functional out of
- * the box. Swap the `handleSubmit` body for an EmailJS call once you
- * have your own service/template/public keys.
+ * Contact section with direct communication links and pre-filled mail composer.
  */
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -34,138 +49,157 @@ const Contact = () => {
     const body = encodeURIComponent(
       `${form.message}\n\n— ${form.name} (${form.email})`
     );
-    const subject = encodeURIComponent(form.subject || "Portfolio Contact");
+    const subject = encodeURIComponent(
+      form.subject || "Portfolio Inquiry - Moneswar Sundareswaran"
+    );
     window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
+    <section id="contact" className="relative py-20 sm:py-28 lg:py-32">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Contact"
-          title="Let's build something together"
-          highlight="together"
-          subtitle="Have a role, project, or idea in mind? I'd love to hear about it."
+          eyebrow="Connect"
+          title="Get In Touch"
+          highlight="Touch"
+          subtitle="Have an opportunity, project collaboration, or technical question? Let's connect."
         />
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          {/* Left: info cards + socials */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 items-stretch">
+          {/* Left: Contact Info Cards & Socials */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-4"
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55 }}
+            className="flex flex-col justify-between gap-4"
           >
-            {contactCards.map(({ icon: Icon, label, value, href }) => {
-              const Wrapper = href ? "a" : "div";
-              return (
-                <Wrapper
-                  key={label}
-                  {...(href ? { href } : {})}
-                  className="glass-panel flex items-center gap-4 p-5 transition-colors duration-300 hover:border-(--color-cyan)/40"
-                >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-(--color-cyan)/20 to-(--color-purple)/20 text-lg text-(--color-cyan)">
-                    <Icon />
-                  </span>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-(--color-text-muted)">{label}</p>
-                    <p className="font-medium text-(--color-text)">{value}</p>
-                  </div>
-                </Wrapper>
-              );
-            })}
+            <div className="flex flex-col gap-4">
+              {contactCards.map(({ icon: Icon, label, value, href }) => {
+                const Wrapper = href ? "a" : "div";
+                return (
+                  <Wrapper
+                    key={label}
+                    {...(href ? { href } : {})}
+                    className="glass-panel flex items-center gap-4 p-5 transition-all duration-300 hover:border-cyan-500/40 hover:-translate-y-0.5"
+                  >
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 text-xl text-cyan-400 shadow-inner">
+                      <Icon />
+                    </span>
+                    <div>
+                      <p className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+                        {label}
+                      </p>
+                      <p className="font-semibold text-sm sm:text-base text-white mt-0.5">
+                        {value}
+                      </p>
+                    </div>
+                  </Wrapper>
+                );
+              })}
+            </div>
 
-            <div className="glass-panel flex items-center gap-4 p-5">
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-lg text-(--color-text-muted) transition-colors hover:text-(--color-cyan)"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-lg text-(--color-text-muted) transition-colors hover:text-(--color-cyan)"
-              >
-                <FaLinkedin />
-              </a>
-              <div className="text-sm text-(--color-text-muted)">
-                <p>{personalInfo.githubHandle}</p>
-                <p>{personalInfo.linkedinHandle}</p>
+            {/* Social handles card */}
+            <div className="glass-panel flex flex-col sm:flex-row items-center justify-between gap-4 p-5">
+              <div className="flex items-center gap-3">
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-xl text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-white/[0.08] hover:text-cyan-400"
+                >
+                  <FaGithub />
+                </a>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-xl text-slate-300 transition-all duration-300 hover:border-cyan-500/50 hover:bg-white/[0.08] hover:text-cyan-400"
+                >
+                  <FaLinkedin />
+                </a>
+              </div>
+              <div className="text-xs font-medium text-slate-400 text-center sm:text-right">
+                <p className="hover:text-white transition-colors">{personalInfo.githubHandle}</p>
+                <p className="hover:text-white transition-colors">{personalInfo.linkedinHandle}</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: message form */}
+          {/* Right: Message Composer Form */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="glass-panel flex flex-col gap-5 p-7 sm:p-9"
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="glass-panel flex flex-col justify-between gap-5 p-6 sm:p-8 lg:p-9"
           >
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <label className="flex flex-col gap-2 text-sm text-(--color-text-muted)">
-                Name
+            <div className="flex flex-col gap-4.5">
+              <div className="grid grid-cols-1 gap-4.5 sm:grid-cols-2">
+                <label className="flex flex-col gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
+                  Your Name
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Jane Doe"
+                    className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/[0.07] focus:ring-2 focus:ring-cyan-500/20"
+                  />
+                </label>
+
+                <label className="flex flex-col gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
+                  Your Email
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="jane@company.com"
+                    className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/[0.07] focus:ring-2 focus:ring-cyan-500/20"
+                  />
+                </label>
+              </div>
+
+              <label className="flex flex-col gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
+                Subject
                 <input
                   type="text"
-                  name="name"
-                  required
-                  value={form.name}
+                  name="subject"
+                  value={form.subject}
                   onChange={handleChange}
-                  placeholder="Your name"
-                  className="rounded-xl border border-(--color-border) bg-white/5 px-4 py-3 text-(--color-text) outline-none transition-colors placeholder:text-(--color-text-muted)/60 focus:border-(--color-cyan)"
+                  placeholder="Opportunity / Project Collaboration"
+                  className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/[0.07] focus:ring-2 focus:ring-cyan-500/20"
                 />
               </label>
-              <label className="flex flex-col gap-2 text-sm text-(--color-text-muted)">
-                Email
-                <input
-                  type="email"
-                  name="email"
+
+              <label className="flex flex-col gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
+                Message
+                <textarea
+                  name="message"
                   required
-                  value={form.email}
+                  rows={4}
+                  value={form.message}
                   onChange={handleChange}
-                  placeholder="you@example.com"
-                  className="rounded-xl border border-(--color-border) bg-white/5 px-4 py-3 text-(--color-text) outline-none transition-colors placeholder:text-(--color-text-muted)/60 focus:border-(--color-cyan)"
+                  placeholder="Hello Moneswar, I saw your portfolio and would like to discuss..."
+                  className="resize-none rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/[0.07] focus:ring-2 focus:ring-cyan-500/20"
                 />
               </label>
             </div>
 
-            <label className="flex flex-col gap-2 text-sm text-(--color-text-muted)">
-              Subject
-              <input
-                type="text"
-                name="subject"
-                value={form.subject}
-                onChange={handleChange}
-                placeholder="What's this about?"
-                className="rounded-xl border border-(--color-border) bg-white/5 px-4 py-3 text-(--color-text) outline-none transition-colors placeholder:text-(--color-text-muted)/60 focus:border-(--color-cyan)"
-              />
-            </label>
-
-            <label className="flex flex-col gap-2 text-sm text-(--color-text-muted)">
-              Message
-              <textarea
-                name="message"
-                required
-                rows={5}
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Tell me a bit about your project or opportunity..."
-                className="resize-none rounded-xl border border-(--color-border) bg-white/5 px-4 py-3 text-(--color-text) outline-none transition-colors placeholder:text-(--color-text-muted)/60 focus:border-(--color-cyan)"
-              />
-            </label>
-
-            <Button type="submit" icon={FiSend} className="self-start">
-              Send Message
-            </Button>
+            <div className="flex flex-wrap items-center gap-3.5 pt-2 border-t border-white/10">
+              <Button type="submit" variant="primary" icon={FiSend}>
+                Send Message
+              </Button>
+              <span className="text-xs text-slate-400">
+                (Composes email to {personalInfo.email})
+              </span>
+            </div>
           </motion.form>
         </div>
       </div>

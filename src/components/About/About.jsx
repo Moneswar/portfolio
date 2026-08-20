@@ -1,86 +1,109 @@
 import { motion } from "framer-motion";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiCpu, FiLayout, FiCode } from "react-icons/fi";
-import { careerObjective, areasOfInterest, personalInfo } from "../../data/resumeData";
+import { aboutContent, areasOfInterest, personalInfo } from "../../data/resumeData";
 import SectionHeading from "../shared/SectionHeading";
 
-// Icon mapping for the "Areas of Interest" pulled straight from the resume
-const interestIcons = {
-  "UX/UI Design": FiLayout,
-  "Full-Stack Development": FiCode,
-  "Hardware Project Development": FiCpu,
+// Distinct icons and color accents for Areas of Interest
+const interestMeta = {
+  "Full-Stack Development": { icon: FiCode, accent: "#06b6d4", bgGradient: "from-cyan-500/20 to-sky-500/20" },
+  "Embedded Systems / Hardware Development": { icon: FiCpu, accent: "#8b5cf6", bgGradient: "from-purple-500/20 to-indigo-500/20" },
+  "UI/UX Design": { icon: FiLayout, accent: "#38bdf8", bgGradient: "from-sky-500/20 to-cyan-500/20" },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
 };
 
 /**
  * About
- * Presents the resume's career objective verbatim, alongside the areas of
- * interest, in a clean two-column glass layout.
+ * Recruiter-aligned About Me and Areas of Interest section.
+ * Clean two-column card structure with subtle micro-interactions.
  */
 const About = () => {
   return (
-    <section id="about" className="relative py-24 sm:py-32">
+    <section id="about" className="relative py-20 sm:py-28 lg:py-32">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="About Me"
-          title="A little about my journey"
-          highlight="journey"
-          subtitle="Currently pursuing my degree while building projects that sit at the intersection of design and engineering."
+          eyebrow="Background"
+          title="About Me"
+          highlight="Me"
+          subtitle="Computer Science & Design undergraduate building practical solutions across software and hardware."
         />
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.4fr_1fr]">
-          {/* Career objective card */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10 items-stretch">
+          {/* Main About Me Glass Card */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="glass-panel p-8 sm:p-10"
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55 }}
+            className="glass-panel flex flex-col justify-between p-7 sm:p-9 lg:p-10"
           >
-            <h3 className="section-heading mb-4 text-xl text-(--color-text)">Career Objective</h3>
-            <p className="text-base leading-relaxed text-(--color-text-muted) sm:text-lg">
-              {careerObjective}
-            </p>
+            <div>
+              <h3 className="section-heading mb-4 text-xl sm:text-2xl text-white">
+                {aboutContent.title}
+              </h3>
+              <p className="text-base sm:text-lg leading-relaxed text-slate-300">
+                {aboutContent.description}
+              </p>
+            </div>
 
-            <div className="mt-8 flex items-center gap-2 text-sm text-(--color-text-muted)">
-              <HiOutlineLocationMarker className="text-(--color-cyan)" />
-              {personalInfo.location}
+            <div className="mt-8 flex items-center gap-2.5 text-sm font-medium text-slate-400 border-t border-white/10 pt-5">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400">
+                <HiOutlineLocationMarker className="text-base" />
+              </span>
+              <span>{personalInfo.location}</span>
             </div>
           </motion.div>
 
-          {/* Areas of interest */}
+          {/* Areas of Interest Cards */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass-panel flex flex-col gap-4 p-8 sm:p-10"
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="glass-panel flex flex-col justify-between gap-4 p-7 sm:p-9 lg:p-10"
           >
-            <h3 className="section-heading mb-2 text-xl text-(--color-text)">Areas of Interest</h3>
-            {areasOfInterest.map((interest, index) => {
-              const Icon = interestIcons[interest] ?? FiCode;
-              return (
-                <motion.div
-                  key={interest}
-                  initial={{ opacity: 0, x: 16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group flex items-center gap-4 rounded-2xl border border-(--color-border) bg-white/[0.03] px-5 py-4 transition-colors hover:border-(--color-cyan)/40 hover:bg-white/[0.06]"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-(--color-cyan)/20 to-(--color-purple)/20 text-lg text-(--color-cyan) transition-transform duration-300 group-hover:scale-110">
-                    <Icon />
-                  </span>
-                  <span className="font-medium text-(--color-text)">{interest}</span>
-                </motion.div>
-              );
-            })}
+            <h3 className="section-heading text-xl sm:text-2xl text-white mb-2">
+              Areas of Interest
+            </h3>
+
+            <div className="flex flex-col gap-3.5 my-auto">
+              {areasOfInterest.map((interest, index) => {
+                const meta = interestMeta[interest] ?? {
+                  icon: FiCode,
+                  accent: "#06b6d4",
+                  bgGradient: "from-cyan-500/20 to-purple-500/20",
+                };
+                const Icon = meta.icon;
+
+                return (
+                  <motion.div
+                    key={interest}
+                    initial={{ opacity: 0, x: 16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: index * 0.08 }}
+                    whileHover={{ x: 4 }}
+                    className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:border-cyan-500/40 hover:bg-white/[0.06]"
+                  >
+                    <span
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${meta.bgGradient} text-xl transition-transform duration-300 group-hover:scale-110`}
+                      style={{ color: meta.accent }}
+                    >
+                      <Icon />
+                    </span>
+                    <span className="font-semibold text-sm sm:text-base text-slate-200 group-hover:text-white">
+                      {interest}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
         </div>
       </div>

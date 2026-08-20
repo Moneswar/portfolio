@@ -4,6 +4,7 @@ import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Education from "./components/Education/Education";
+import Certifications from "./components/Certifications/Certifications";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import CursorGlow from "./components/shared/CursorGlow";
@@ -11,9 +12,7 @@ import ScrollProgressBar from "./components/shared/ScrollProgressBar";
 
 /**
  * App
- * Composes the whole single-page portfolio. Each section is a self
- * contained component with its own id, so the Navbar can link/scroll
- * to it directly (#home, #about, #skills, ...).
+ * Composes the single-page portfolio with clean section routing.
  */
 function App() {
   return (
@@ -28,6 +27,7 @@ function App() {
         <Skills />
         <Projects />
         <Education />
+        <Certifications />
         <Contact />
       </main>
 
