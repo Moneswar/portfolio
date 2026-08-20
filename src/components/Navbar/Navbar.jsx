@@ -61,13 +61,13 @@ const Navbar = () => {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-[#060913]/90 backdrop-blur-xl shadow-2xl shadow-black/60"
+          ? "border-b border-white/10 bg-[#040711]/90 backdrop-blur-xl shadow-2xl shadow-black/60"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <nav
         aria-label="Main Navigation"
-        className="container-px mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between"
+        className="mx-auto flex h-[4.5rem] max-w-[1400px] items-center justify-between px-6 sm:px-10 lg:px-12 xl:px-16"
       >
         {/* Brand Mark with Cybernetic Neon Glow */}
         <Link
@@ -149,9 +149,9 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-b border-white/10 bg-[#060913]/98 backdrop-blur-2xl md:hidden shadow-2xl"
+            className="overflow-hidden border-b border-white/10 bg-[#040711]/98 backdrop-blur-2xl md:hidden shadow-2xl"
           >
-            <ul className="container-px mx-auto flex flex-col gap-1.5 py-5">
+            <ul className="mx-auto flex max-w-[1400px] flex-col gap-1.5 px-6 py-5">
               {navLinks.map((link) => {
                 const id = link.href.replace("/#", "").replace("#", "");
                 const isActive = isHomePage && activeId === id;
