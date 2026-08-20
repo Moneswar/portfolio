@@ -32,8 +32,8 @@ const sectionIds = navLinks.map((link) =>
 /**
  * Navbar
  * Futuristic Engineering Command Bar.
- * Rounded glass container with glowing cyan/purple border, icon-enhanced navigation,
- * active indicator, and "LET'S TALK" gradient CTA.
+ * Synchronized with max-w-[1500px] container, rounded glass container,
+ * icon navigation with upward hover micro-motion, and "LET'S TALK" gradient CTA.
  */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -82,13 +82,13 @@ const Navbar = () => {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-[#030712]/90 backdrop-blur-xl shadow-2xl shadow-black/60"
+          ? "border-b border-white/10 bg-[#030712]/92 backdrop-blur-xl shadow-2xl shadow-black/60"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <nav
         aria-label="Main Navigation"
-        className="mx-auto flex h-16 sm:h-[4.25rem] max-w-[1400px] items-center justify-between px-6 sm:px-10 lg:px-12 xl:px-16"
+        className="mx-auto flex h-16 sm:h-[4.25rem] max-w-[1500px] items-center justify-between px-6 sm:px-10 lg:px-12 xl:px-16"
       >
         {/* Brand Mark with Cybernetic Neon Glow */}
         <Link
@@ -109,7 +109,7 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links with Icons */}
+        {/* Desktop Navigation Links with Icons & Micro-motion */}
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const id = link.href.replace("/#", "").replace("#", "");
@@ -121,13 +121,13 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative flex items-center gap-1.5 px-3 py-1.5 text-xs lg:text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:outline-2 focus-visible:outline-cyan-400 ${
+                  className={`group relative flex items-center gap-1.5 px-3 py-1.5 text-xs lg:text-sm font-medium transition-all duration-200 rounded-lg focus-visible:outline-2 focus-visible:outline-cyan-400 ${
                     isActive
                       ? "text-cyan-300 font-semibold"
                       : "text-slate-300 hover:text-white"
                   }`}
                 >
-                  <Icon className="text-xs opacity-75" />
+                  <Icon className="text-xs opacity-75 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:opacity-100 group-hover:text-cyan-300" />
                   <span>{link.label}</span>
                   {isActive && (
                     <motion.span
@@ -176,7 +176,7 @@ const Navbar = () => {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden border-b border-white/10 bg-[#030712]/98 backdrop-blur-2xl md:hidden shadow-2xl"
           >
-            <ul className="mx-auto flex max-w-[1400px] flex-col gap-1.5 px-6 py-5">
+            <ul className="mx-auto flex max-w-[1500px] flex-col gap-1.5 px-6 py-5">
               {navLinks.map((link) => {
                 const id = link.href.replace("/#", "").replace("#", "");
                 const isActive = isHomePage && activeId === id;
