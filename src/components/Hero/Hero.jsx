@@ -46,7 +46,7 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="section-heading text-3xl sm:text-5xl lg:text-[3.4rem] font-bold leading-[1.14] text-white">
+          <h1 className="section-heading text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.14] text-white">
             Hi, I'm{" "}
             <span className="text-gradient">
               {personalInfo.name.split(" ")[0]}
