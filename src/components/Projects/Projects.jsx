@@ -6,9 +6,8 @@ import SectionHeading from "../shared/SectionHeading";
 
 /**
  * ProjectShowcaseCard
- * Premium, recruiter-focused showcase layout.
- * Features large, uncropped project images (FarmDirect real web UI & Smart Healthcare exact 4-view collage)
- * alongside clear feature breakdowns and verified action buttons.
+ * Large-format recruiter showcase layout with 42% info / 58% image split.
+ * Features uncropped, high-resolution visual proof of real work (FarmDirect live web UI & Smart Healthcare 2x2 collage).
  */
 const ProjectShowcaseCard = ({ project, index }) => {
   const isHealthcare = project.id === "smart-healthcare";
@@ -17,23 +16,24 @@ const ProjectShowcaseCard = ({ project, index }) => {
     <motion.article
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.08 }}
       transition={{ duration: 0.65, delay: index * 0.1 }}
-      className="glass-panel relative overflow-hidden rounded-3xl border border-white/15 bg-[#0b101d]/90 p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/40"
+      className="glass-panel relative overflow-hidden rounded-3xl border border-white/15 bg-[#0a0f1d]/90 p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/40"
     >
-      {/* Background Ambient Glow */}
+      {/* Ambient background glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl"
+        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-cyan-500/[0.08] blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -left-32 h-[28rem] w-[28rem] rounded-full bg-purple-500/[0.08] blur-3xl"
       />
 
-      <div className="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-        {/* Left Column: Project Information */}
-        <div className="flex flex-col justify-between lg:col-span-6 xl:col-span-5">
+      {/* 42% Info / 58% Image Balanced Grid */}
+      <div className="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-[42fr_58fr] lg:gap-12 xl:gap-14">
+        {/* Left Column (42%): Project Information */}
+        <div className="flex flex-col justify-between py-1">
           <div>
             {/* Category Badge */}
             <div className="mb-4">
@@ -43,7 +43,7 @@ const ProjectShowcaseCard = ({ project, index }) => {
             </div>
 
             {/* Project Title */}
-            <h3 className="section-heading font-display text-2xl sm:text-3xl lg:text-[2rem] font-bold leading-tight text-white">
+            <h3 className="section-heading font-display text-2xl sm:text-3xl lg:text-[2.1rem] font-bold leading-tight text-white">
               {project.title}
             </h3>
 
@@ -70,7 +70,7 @@ const ProjectShowcaseCard = ({ project, index }) => {
               </ul>
             </div>
 
-            {/* Tech Stack Pills */}
+            {/* Tech Stack / Domain Pills */}
             <div className="mt-6 sm:mt-7">
               <h4 className="mb-3 text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
                 {isHealthcare ? "Domain Tags" : "Technology Stack"}
@@ -90,7 +90,7 @@ const ProjectShowcaseCard = ({ project, index }) => {
 
           {/* Action Buttons */}
           <div className="mt-8 sm:mt-9 flex flex-wrap items-center gap-3.5 border-t border-white/10 pt-6">
-            {/* FarmDirect Primary: Live Demo */}
+            {/* FarmDirect Primary Action: Live Demo */}
             {project.demo && (
               <a
                 href={project.demo}
@@ -116,7 +116,7 @@ const ProjectShowcaseCard = ({ project, index }) => {
               </Link>
             )}
 
-            {/* Demo Coming Soon (Disabled / Non-clickable for Hardware) */}
+            {/* Healthcare Disabled State: Demo Coming Soon */}
             {!project.demo && (
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-2.5 text-xs font-medium text-slate-400 cursor-not-allowed">
                 <span className="h-2 w-2 rounded-full bg-amber-400/80 animate-pulse" />
@@ -126,16 +126,16 @@ const ProjectShowcaseCard = ({ project, index }) => {
           </div>
         </div>
 
-        {/* Right Column: Large Project Image Showcase */}
-        <div className="lg:col-span-6 xl:col-span-7">
-          <div className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-[#080d18] p-3 sm:p-5 shadow-2xl transition-all duration-500 hover:border-cyan-500/40">
+        {/* Right Column (58%): Large Project Image Showcase */}
+        <div className="flex w-full items-center justify-center">
+          <div className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-[#060a14] p-3 sm:p-5 lg:p-6 shadow-2xl transition-all duration-500 hover:border-cyan-500/40">
             {/* Subtle background ambient spotlight */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 opacity-25 pointer-events-none"
+              className="absolute inset-0 opacity-30 pointer-events-none"
               style={{
                 backgroundImage:
-                  "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.2), transparent 70%)",
+                  "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.18), transparent 70%)",
               }}
             />
 
@@ -146,16 +146,16 @@ const ProjectShowcaseCard = ({ project, index }) => {
               <img
                 src={project.previewImage}
                 alt={project.imageAlt || project.title}
-                className={`w-full ${
+                className={`w-full h-auto ${
                   isHealthcare
-                    ? "h-[360px] sm:h-[460px] lg:h-[520px] object-contain"
-                    : "h-[280px] sm:h-[360px] lg:h-[420px] object-contain"
+                    ? "max-h-[560px] sm:max-h-[640px] lg:max-h-[720px] object-contain"
+                    : "max-h-[380px] sm:max-h-[460px] lg:max-h-[520px] object-contain"
                 } rounded-lg transition-transform duration-500 group-hover:scale-[1.015]`}
                 loading="lazy"
               />
 
               {/* Corner badge indicating real visual */}
-              <div className="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-slate-950/85 px-3 py-1 text-[11px] font-mono font-medium text-cyan-300 backdrop-blur-md shadow-md">
+              <div className="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-slate-950/85 px-3.5 py-1.5 text-[11px] font-mono font-medium text-cyan-300 backdrop-blur-md shadow-md">
                 {isHealthcare
                   ? "Exact 4-View Prototype Collage"
                   : "Real Application Preview"}
@@ -175,7 +175,7 @@ const ProjectShowcaseCard = ({ project, index }) => {
 const Projects = () => {
   return (
     <section id="projects" className="relative py-20 sm:py-28 lg:py-32">
-      <div className="container-px mx-auto max-w-6xl">
+      <div className="container-px mx-auto max-w-[1240px]">
         <SectionHeading
           eyebrow="Practical Work"
           title="Featured Projects"
@@ -183,7 +183,7 @@ const Projects = () => {
           subtitle="Real deployed web applications and authentic physical hardware prototypes."
         />
 
-        <div className="flex flex-col gap-12 sm:gap-16">
+        <div className="flex flex-col gap-14 sm:gap-18">
           {projects.map((project, index) => (
             <ProjectShowcaseCard
               key={project.id}
