@@ -30,18 +30,10 @@ import {
 } from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
 import { personalInfo } from "../../data/resumeData";
-import useTypewriter from "../../hooks/useTypewriter";
 import AnimatedBackground from "../shared/AnimatedBackground";
 import profileImg from "../../assets/favicon.png";
 
-const roles = [
-  "Embedded Systems Enthusiast",
-  "Full-Stack Web Developer",
-  "Software Developer",
-  "UI/UX Designer",
-];
-
-// Verified Role Chips with Icons
+// Verified Role Chips with Icons (Compact Group matching reference)
 const roleChips = [
   { label: "Full-Stack Web Developer", icon: FiLayers, color: "text-cyan-300 border-cyan-500/35 bg-cyan-500/10" },
   { label: "Embedded Systems Enthusiast", icon: FiCpu, color: "text-emerald-300 border-emerald-500/35 bg-emerald-500/10" },
@@ -60,7 +52,7 @@ const infoCards = [
   {
     icon: FiBookOpen,
     value: "BE (CSD) Degree",
-    label: "Kongu Engineering College '27",
+    label: "Kongu Engg College '27",
     color: "text-blue-400 border-blue-500/30 bg-blue-950/30",
   },
   {
@@ -90,7 +82,7 @@ const skillModules = [
     bgClass: "bg-[#05111b]/92 hover:bg-[#081a29]",
     textClass: "text-emerald-300",
     glowColor: "rgba(0, 255, 157, 0.45)",
-    desktopPos: "top-[-1.5rem] left-1/2 -translate-x-1/2",
+    desktopPos: "top-[-1.25rem] left-1/2 -translate-x-1/2",
     path: "M 310 175 L 310 85",
     nodeCoord: { cx: 310, cy: 85 },
     floatAnimation: {
@@ -147,7 +139,7 @@ const skillModules = [
     bgClass: "bg-[#0c0822]/92 hover:bg-[#150d3c]",
     textClass: "text-purple-300",
     glowColor: "rgba(168, 85, 247, 0.45)",
-    desktopPos: "bottom-[0%] left-[2%] xl:left-[4%]",
+    desktopPos: "bottom-[1%] left-[2%] xl:left-[4%]",
     path: "M 215 435 L 120 515",
     nodeCoord: { cx: 120, cy: 515 },
     floatAnimation: {
@@ -166,7 +158,7 @@ const skillModules = [
     bgClass: "bg-[#18071a]/92 hover:bg-[#270c2b]",
     textClass: "text-pink-300",
     glowColor: "rgba(236, 72, 153, 0.45)",
-    desktopPos: "bottom-[0%] right-[2%] xl:right-[4%]",
+    desktopPos: "bottom-[1%] right-[2%] xl:right-[4%]",
     path: "M 405 435 L 500 515",
     nodeCoord: { cx: 500, cy: 515 },
     floatAnimation: {
@@ -190,23 +182,22 @@ const techBadges = [
  * Hero
  * Engineering / Developer Command Center Portfolio Hero.
  * Matches the primary visual reference design with a balanced 43/57 desktop split,
- * 4-line typography composition, compact role chips, 4 equal-height factual metric cards,
+ * 4-line typography composition, clean degree line, compact role chips, 4 equal-height metric cards,
  * enlarged 335px circular portrait core, 5 interconnected skill modules, floating IDE panel,
- * lower-right developer laptop visual, and flowing bottom digital terrain wave.
+ * clearly visible lower-right developer laptop visual, and flowing bottom digital terrain wave.
  */
 const Hero = () => {
-  const typedRole = useTypewriter(roles, { pause: 1600 });
   const [activeModule, setActiveModule] = useState(null);
 
   return (
     <section
       id="home"
-      className="relative flex min-h-[100vh] items-center overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-24 lg:pb-12"
+      className="relative flex min-h-[100vh] items-center overflow-hidden pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-20 lg:pb-6"
     >
       <AnimatedBackground />
 
       <div className="mx-auto w-full max-w-[1520px] px-4 sm:px-8 lg:px-10 xl:px-12 relative z-10">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[43fr_57fr] lg:gap-8 xl:gap-12">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[43fr_57fr] lg:gap-8 xl:gap-12">
           {/* Left Column (43%): Status, Headline, Degree, Role Chips, Description, Metrics, CTA & Socials */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -219,7 +210,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3.5 py-1 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-cyan-300 backdrop-blur-md shadow-[0_0_15px_-3px_rgba(0,240,255,0.25)]"
+              className="mb-3 inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3.5 py-1 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-cyan-300 backdrop-blur-md shadow-[0_0_15px_-3px_rgba(0,240,255,0.25)]"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -228,12 +219,12 @@ const Hero = () => {
               OPEN TO INTERNSHIPS &amp; JOB OPPORTUNITIES
             </motion.div>
 
-            {/* Main Headline (Exact 4-line Composition, Controlled 56-64px Desktop) */}
+            {/* Main Headline (Exact 4-line Composition, Controlled 58-64px Desktop) */}
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
-              className="font-display text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-[3.25rem] font-extrabold leading-[1.05] tracking-tight text-white"
+              className="font-display text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-[3.15rem] font-extrabold leading-[1.04] tracking-tight text-white"
             >
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 bg-clip-text text-transparent">
@@ -253,22 +244,18 @@ const Hero = () => {
               solutions.
             </motion.h1>
 
-            {/* Degree & Animated Role Line (1 line on desktop) */}
+            {/* Degree Line (Clean & Compact) */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.18 }}
-              className="mt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm font-mono font-medium text-slate-300"
+              className="mt-2.5 flex items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm font-mono font-medium text-slate-300"
             >
               <span className="inline-flex items-center gap-1.5 text-cyan-300 font-semibold">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 BE Computer Science and Design
               </span>
               <span className="text-slate-500 font-bold">|</span>
-              <div className="flex items-center min-w-[180px]">
-                <span className="text-cyan-300 font-semibold">{typedRole}</span>
-                <span className="ml-1 inline-block h-3.5 w-[2px] bg-cyan-400 animate-pulse" />
-              </div>
             </motion.div>
 
             {/* Role Chips (Compact Group) */}
@@ -276,7 +263,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.24 }}
-              className="mt-3 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 lg:justify-start max-w-[560px]"
+              className="mt-2.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 lg:justify-start max-w-[560px]"
             >
               {roleChips.map((chip) => {
                 const Icon = chip.icon;
@@ -297,7 +284,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.3 }}
-              className="mt-3.5 max-w-[560px] text-xs sm:text-[14px] leading-relaxed text-slate-300/90"
+              className="mt-3 max-w-[560px] text-xs sm:text-[13.5px] leading-relaxed text-slate-300/90"
             >
               Computer Science and Design undergraduate with hands-on experience in full-stack web development, embedded systems, and UI/UX design. Interested in building practical, user-focused solutions that combine software, hardware, and modern web technologies.
             </motion.p>
@@ -307,14 +294,14 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.36 }}
-              className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-[560px]"
+              className="mt-3.5 grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-[560px]"
             >
               {infoCards.map((card) => {
                 const Icon = card.icon;
                 return (
                   <div
                     key={card.value}
-                    className={`flex flex-col items-start justify-center min-h-[88px] sm:min-h-[95px] rounded-xl border p-2.5 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${card.color}`}
+                    className={`flex flex-col items-start justify-center min-h-[85px] sm:min-h-[90px] rounded-xl border p-2.5 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${card.color}`}
                   >
                     <Icon className="text-base mb-1" />
                     <span className="font-display text-xs sm:text-[13px] font-bold text-white whitespace-nowrap">
@@ -333,7 +320,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.42 }}
-              className="mt-4.5 sm:mt-5 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 lg:justify-start"
+              className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 lg:justify-start"
             >
               {/* Primary: View My Work */}
               <a
@@ -368,7 +355,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.45, delay: 0.48 }}
-              className="mt-3.5 sm:mt-4 flex items-center justify-center gap-3 lg:justify-start"
+              className="mt-3 flex items-center justify-center gap-3 lg:justify-start"
             >
               {[
                 {
@@ -409,9 +396,9 @@ const Hero = () => {
             className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[620px] lg:max-w-none"
           >
             {/* Single Relative Coordinate Canvas (620x620) */}
-            <div className="relative flex items-center justify-center h-[400px] w-[400px] sm:h-[480px] sm:w-[480px] lg:h-[540px] lg:w-[540px] xl:h-[620px] xl:w-[620px]">
+            <div className="relative flex items-center justify-center h-[390px] w-[390px] sm:h-[460px] sm:w-[460px] lg:h-[530px] lg:w-[530px] xl:h-[610px] xl:w-[610px]">
               {/* Upper-Right Floating IDE Code Panel */}
-              <div className="hidden xl:block absolute -top-6 -right-2 z-10 w-56 rounded-xl border border-cyan-500/30 bg-[#050a18]/90 p-2.5 backdrop-blur-md shadow-lg shadow-cyan-500/10 pointer-events-none opacity-90 animate-float-gentle">
+              <div className="hidden xl:block absolute -top-5 -right-1 z-10 w-56 rounded-xl border border-cyan-500/30 bg-[#050a18]/90 p-2.5 backdrop-blur-md shadow-lg shadow-cyan-500/10 pointer-events-none opacity-90 animate-float-gentle">
                 <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
                   <div className="flex items-center gap-1">
                     <span className="h-2 w-2 rounded-full bg-rose-500/80" />
@@ -435,9 +422,9 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Lower-Right Developer Workspace / Laptop Visual */}
-              <div className="hidden xl:block absolute -bottom-4 -right-4 z-10 w-48 pointer-events-none opacity-75 animate-float-reverse-gentle">
-                <div className="relative rounded-t-lg border border-purple-500/30 bg-[#070b1c]/95 p-1.5 shadow-md backdrop-blur-md">
+              {/* Lower-Right Developer Workspace / Laptop Visual (Clearly Visible) */}
+              <div className="hidden xl:block absolute bottom-1 right-1 z-10 w-48 pointer-events-none opacity-80 animate-float-reverse-gentle">
+                <div className="relative rounded-t-lg border border-purple-500/35 bg-[#070b1c]/95 p-1.5 shadow-md backdrop-blur-md">
                   <div className="h-16 rounded bg-[#02050e] p-1.5 flex flex-col gap-1 border border-white/5">
                     <div className="flex items-center justify-between">
                       <span className="h-1 w-7 rounded bg-cyan-400/70" />
@@ -594,7 +581,7 @@ const Hero = () => {
                 })}
               </div>
 
-              {/* Central Large Circular Profile Core (Diameter 335px on desktop) */}
+              {/* Central Large Circular Profile Core (Diameter ~335px on desktop) */}
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
@@ -734,7 +721,7 @@ const Hero = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-slate-400 transition-colors hover:text-cyan-300"
+        className="absolute bottom-2 sm:bottom-3 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-slate-400 transition-colors hover:text-cyan-300"
       >
         <span className="hidden sm:inline tracking-[0.2em]">SCROLL DOWN</span>
         <div className="flex h-6 w-4 items-start justify-center rounded-full border border-cyan-500/40 p-0.5 bg-white/[0.02]">
