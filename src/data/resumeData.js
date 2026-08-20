@@ -74,39 +74,78 @@ export const skillGroups = [
 
 export const projects = [
   {
-    id: "project-1",
+    id: "farmdirect",
     title: "Direct Farmer To Customer Trading Platform",
-    category: "Full Stack",
+    category: "Full-Stack Development",
+    shortCategory: "Full Stack",
     description:
       "A full-stack marketplace platform designed to connect farmers directly with customers, reducing unnecessary intermediaries and improving access to agricultural products.",
+    detailedOverview:
+      "Direct Farmer To Customer Trading Platform is an end-to-end e-commerce marketplace built to streamline the agricultural supply chain. By bridging the gap between local farmers and direct consumers, the platform improves market accessibility, eliminates middleman margins, and provides a transparent digital marketplace for fresh produce.",
+    problemStatement:
+      "Traditional agricultural distribution relies on multiple intermediaries, which lowers profit margins for farmers and increases retail costs for consumers while causing delays in fresh produce delivery.",
+    solutionOverview:
+      "FarmDirect provides a decentralized marketplace where farmers manage their inventory directly and consumers order fresh produce with transparent pricing, role-based dashboards, and real-time order tracking.",
     features: [
-      "User authentication & account management",
-      "Product management and product listing",
+      "User authentication & role management",
+      "Product listing & inventory management",
       "Direct farmer and customer interaction",
-      "Order management and checkout system",
+      "Order management and cart/checkout",
       "MongoDB database integration for persistent storage",
-      "Responsive, mobile-friendly web interface",
+      "Responsive user interface",
     ],
     techStack: ["React", "Node.js", "Express.js", "MongoDB"],
-    github: "https://github.com/Moneswar",
+    github: null, // Note: FarmDirect repository URL is left unconfigured to avoid inventing links
     demo: "https://farm-directly.onrender.com",
+    detailsPath: "/projects/farmdirect",
+    previewImage: "/images/projects/farmdirect-preview.png",
+    imageAlt: "FarmDirect full-stack farmer to customer marketplace",
+    howItWorks: [
+      {
+        step: "01",
+        title: "Account Registration & Role Assignment",
+        desc: "Farmers and customers register with role-specific dashboards to manage product listings or purchase produce.",
+      },
+      {
+        step: "02",
+        title: "Product Listing & Catalog Management",
+        desc: "Farmers list agricultural produce, prices, and quantities directly stored in the MongoDB database.",
+      },
+      {
+        step: "03",
+        title: "Direct Interaction & Order Checkout",
+        desc: "Customers browse local listings, add items to cart, and place orders directly with transparent tracking.",
+      },
+    ],
   },
   {
-    id: "project-2",
+    id: "smart-healthcare",
     title: "Smart Healthcare Hardware System",
-    category: "Hardware / Embedded",
+    category: "Hardware / Embedded Systems",
+    shortCategory: "Hardware / Embedded",
     description:
       "A smart healthcare hardware system designed for real-time monitoring and emergency safety with automated and controlled operations.",
+    detailedOverview:
+      "The Smart Healthcare Hardware System is a functional hardware prototype designed for continuous environmental and patient safety monitoring. Featuring automated and remote-controlled operations, the prototype combines sensor data acquisition, real-time status monitoring, and integrated emergency fire detection response functionality to ensure safe and dependable operation.",
     features: [
-      "Hardware and embedded system development",
-      "Sensors and real-time monitoring integration",
+      "Hardware & embedded system development",
+      "Real-time monitoring and sensor integration",
       "Automated and remote-controlled operation",
       "Integrated fire detection and emergency response safety",
       "Practical hardware solution focused on safety and reliability",
     ],
-    techStack: ["Embedded Systems", "Sensors", "IoT", "Hardware Design"],
-    github: "https://github.com/Moneswar",
+    techStack: [
+      "Embedded Systems",
+      "Sensors",
+      "IoT",
+      "Hardware Design",
+      "Real-time Monitoring",
+    ],
+    github: null, // Left unconfigured to avoid inventing links
     demo: null, // "Demo Coming Soon"
+    detailsPath: "/projects/smart-healthcare",
+    previewImage: "/images/projects/smart-healthcare.jpg",
+    imageAlt: "Smart Healthcare Hardware System real prototype",
   },
 ];
 
@@ -152,11 +191,11 @@ export const certifications = [
 ];
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Education", href: "#education" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Education", href: "/#education" },
+  { label: "Certifications", href: "/#certifications" },
+  { label: "Contact", href: "/#contact" },
 ];

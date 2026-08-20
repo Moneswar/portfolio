@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { navLinks } from "../../data/resumeData";
 import useActiveSection from "../../hooks/useActiveSection";
 
-const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
+const sectionIds = navLinks.map((link) => link.href.replace("/#", "").replace("#", ""));
 
 /**
  * Navbar
- * Sticky top navigation bar with active section indicator and responsive mobile drawer.
+ * Sticky top navigation bar with active section indicator, smooth multi-route navigation,
+ * and responsive mobile drawer.
  */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
   const activeId = useActiveSection(sectionIds);
 
   useEffect(() => {
@@ -33,7 +38,22 @@ const Navbar = () => {
     };
   }, [mobileOpen]);
 
-  const handleLinkClick = () => setMobileOpen(false);
+  const handleNavClick = (e, href) => {
+    setMobileOpen(false);
+    const targetId = href.replace("/#", "").replace("#", "");
+
+    if (isHomePage) {
+      e.preventDefault();
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${targetId}`);
+      }
+    } else {
+      e.preventDefault();
+      navigate(`/#${targetId}`);
+    }
+  };
 
   return (
     <header
@@ -48,8 +68,9 @@ const Navbar = () => {
         className="container-px mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between"
       >
         {/* Brand Mark */}
-        <a
-          href="#home"
+        <Link
+          to="/#home"
+          onClick={(e) => handleNavClick(e, "/#home")}
           className="group flex items-center gap-2.5 font-display text-base sm:text-lg font-bold tracking-tight text-white focus-visible:outline-2 focus-visible:outline-(--color-cyan) rounded-lg"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-(--color-cyan) to-(--color-purple) text-sm font-bold text-slate-950 shadow-md transition-transform duration-300 group-hover:scale-105">
@@ -58,17 +79,18 @@ const Navbar = () => {
           <span className="inline-block">
             Moneswar<span className="text-(--color-cyan)">.</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <ul className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
-            const id = link.href.replace("#", "");
-            const isActive = activeId === id;
+            const id = link.href.replace("/#", "").replace("#", "");
+            const isActive = isHomePage && activeId === id;
             return (
               <li key={link.href}>
                 <a
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 rounded-lg focus-visible:outline-2 focus-visible:outline-(--color-cyan) ${
                     isActive
                       ? "text-white font-semibold"
@@ -92,7 +114,8 @@ const Navbar = () => {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="#contact"
+            href="/#contact"
+            onClick={(e) => handleNavClick(e, "/#contact")}
             className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-4.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-950 shadow-md shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/35 hover:-translate-y-0.5"
           >
             Let's Talk
@@ -123,13 +146,13 @@ const Navbar = () => {
           >
             <ul className="container-px mx-auto flex flex-col gap-1.5 py-5">
               {navLinks.map((link) => {
-                const id = link.href.replace("#", "");
-                const isActive = activeId === id;
+                const id = link.href.replace("/#", "").replace("#", "");
+                const isActive = isHomePage && activeId === id;
                 return (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      onClick={handleLinkClick}
+                      onClick={(e) => handleNavClick(e, link.href)}
                       className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${
                         isActive
                           ? "bg-white/[0.08] text-cyan-300 font-semibold border border-cyan-500/30"
@@ -146,8 +169,8 @@ const Navbar = () => {
               })}
               <li className="pt-3">
                 <a
-                  href="#contact"
-                  onClick={handleLinkClick}
+                  href="/#contact"
+                  onClick={(e) => handleNavClick(e, "/#contact")}
                   className="flex items-center justify-center rounded-xl bg-gradient-to-r from-(--color-cyan) to-(--color-purple) px-4 py-3 text-center text-sm font-bold text-slate-950 shadow-md"
                 >
                   Contact Me

@@ -1,38 +1,54 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Skills from "./components/Skills/Skills";
-import Projects from "./components/Projects/Projects";
-import Education from "./components/Education/Education";
-import Certifications from "./components/Certifications/Certifications";
-import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import CursorGlow from "./components/shared/CursorGlow";
 import ScrollProgressBar from "./components/shared/ScrollProgressBar";
+import HomePage from "./pages/HomePage";
+import FarmDirectDetail from "./pages/FarmDirectDetail";
+import SmartHealthcareDetail from "./pages/SmartHealthcareDetail";
 
 /**
  * App
- * Composes the single-page portfolio with clean section routing.
+ * Sets up BrowserRouter routes for the main portfolio and dedicated project detail pages.
  */
 function App() {
   return (
-    <div className="relative min-h-screen bg-(--color-bg) text-(--color-text)">
-      <ScrollProgressBar />
-      <CursorGlow />
-      <Navbar />
-
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <Certifications />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <Router>
+      <div className="relative min-h-screen bg-(--color-bg) text-(--color-text)">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <ScrollProgressBar />
+                <CursorGlow />
+                <Navbar />
+                <HomePage />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/projects/farmdirect" element={<FarmDirectDetail />} />
+          <Route
+            path="/projects/smart-healthcare"
+            element={<SmartHealthcareDetail />}
+          />
+          {/* Catch-all fallback */}
+          <Route
+            path="*"
+            element={
+              <>
+                <ScrollProgressBar />
+                <CursorGlow />
+                <Navbar />
+                <HomePage />
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
