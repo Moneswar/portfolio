@@ -1,16 +1,23 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FiExternalLink, FiCheckCircle, FiArrowRight } from "react-icons/fi";
+import {
+  FiExternalLink,
+  FiCheckCircle,
+  FiArrowRight,
+  FiMaximize2,
+  FiX,
+} from "react-icons/fi";
 import { projects } from "../../data/resumeData";
 import SectionHeading from "../shared/SectionHeading";
 
 /**
  * ProjectShowcaseCard
- * Premium cinematic project showcase layout.
- * Directly integrates the real visual asset (FarmDirect web UI & Smart Healthcare 2x2 collage)
- * seamlessly into the dark card with multi-layer gradient blending, ambient lighting, and zero harsh borders.
+ * Premium project showcase layout with integrated image panel.
+ * The real project visual serves as the dominant visual canvas,
+ * with UI badge and technology tags layered directly over the image.
  */
-const ProjectShowcaseCard = ({ project, index }) => {
+const ProjectShowcaseCard = ({ project, index, onOpenLightbox }) => {
   const isHealthcare = project.id === "smart-healthcare";
 
   return (
@@ -19,21 +26,21 @@ const ProjectShowcaseCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.08 }}
       transition={{ duration: 0.65, delay: index * 0.1 }}
-      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#080d18] shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-cyan-500/30"
+      className="group relative overflow-hidden rounded-3xl border border-white/12 bg-[#090e1a]/95 p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:border-cyan-500/35"
     >
-      {/* Cinematic Ambient Glow Behind Card */}
+      {/* Background Ambient Spotlight */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.07] blur-3xl transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-cyan-500/[0.08] blur-3xl transition-opacity duration-700 group-hover:opacity-100"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -left-32 h-[30rem] w-[30rem] rounded-full bg-purple-500/[0.07] blur-3xl transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute -bottom-32 -left-32 h-[30rem] w-[30rem] rounded-full bg-purple-500/[0.08] blur-3xl transition-opacity duration-700 group-hover:opacity-100"
       />
 
-      <div className="relative z-10 grid grid-cols-1 items-stretch lg:grid-cols-12 min-h-[560px] lg:min-h-[600px] xl:min-h-[640px]">
-        {/* Left Column (40–42% on desktop): Project Information */}
-        <div className="relative z-20 flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 lg:col-span-5 bg-gradient-to-b from-[#080d18] via-[#080d18]/95 to-[#080d18] lg:bg-transparent">
+      <div className="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
+        {/* Left Column (40–45%): Project Information */}
+        <div className="flex flex-col justify-between lg:col-span-5">
           <div>
             {/* Category Badge */}
             <div className="mb-4">
@@ -126,65 +133,88 @@ const ProjectShowcaseCard = ({ project, index }) => {
           </div>
         </div>
 
-        {/* Right Column (58–60% on desktop): Immersive Cinematic Visual Showcase */}
-        <div className="relative flex items-center justify-center overflow-hidden lg:col-span-7 min-h-[380px] sm:min-h-[480px] lg:min-h-[560px] xl:min-h-[640px] bg-[#060a12]/80">
-          {/* Subtle Radial Ambient Spotlight directly behind the hardware */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-40"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 55% 50%, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.08), transparent 72%)",
-            }}
-          />
-
-          {/* Interactive Link wrapper for the visual */}
-          <Link
-            to={project.detailsPath}
-            aria-label={`View details for ${project.title}`}
-            className="relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-6 lg:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-2xl"
-          >
-            <img
-              src={project.previewImage}
-              alt={project.imageAlt || project.title}
-              className={`w-full max-w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02] filter contrast-[1.02] ${
-                isHealthcare
-                  ? "max-h-[500px] sm:max-h-[580px] lg:max-h-[620px] xl:max-h-[660px]"
-                  : "max-h-[360px] sm:max-h-[440px] lg:max-h-[500px] xl:max-h-[540px]"
-              }`}
-              loading="lazy"
+        {/* Right Column (55–60%): Large Integrated Image Showcase with Layered UI */}
+        <div className="lg:col-span-7">
+          <div className="group/panel relative flex flex-col justify-center overflow-hidden rounded-2xl border border-white/12 bg-[#050811] min-h-[420px] sm:min-h-[500px] lg:min-h-[560px] xl:min-h-[600px] shadow-2xl transition-all duration-500 hover:border-cyan-500/40">
+            {/* Subtle Ambient Radial Glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-40"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.16), rgba(139, 92, 246, 0.08), transparent 70%)",
+              }}
             />
-          </Link>
 
-          {/* Cinematic Blend Layer 1: Horizontal gradient from info side over image */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
-            style={{
-              background:
-                "linear-gradient(90deg, #080d18 0%, rgba(8, 13, 24, 0.85) 12%, rgba(8, 13, 24, 0.2) 35%, rgba(8, 13, 24, 0) 70%)",
-            }}
-          />
+            {/* Clickable Image Container */}
+            <div
+              onClick={() => {
+                if (isHealthcare) {
+                  onOpenLightbox(project.previewImage);
+                }
+              }}
+              className={`relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-6 lg:p-7 ${
+                isHealthcare ? "cursor-pointer" : ""
+              }`}
+            >
+              <img
+                src={project.previewImage}
+                alt={project.imageAlt || project.title}
+                className={`w-full max-w-full object-contain transition-transform duration-700 ease-out group-hover/panel:scale-[1.02] filter contrast-[1.02] ${
+                  isHealthcare
+                    ? "max-h-[480px] sm:max-h-[540px] lg:max-h-[580px] xl:max-h-[620px]"
+                    : "max-h-[340px] sm:max-h-[420px] lg:max-h-[460px] xl:max-h-[500px]"
+                }`}
+                loading="lazy"
+              />
+            </div>
 
-          {/* Cinematic Blend Layer 2: Soft Top & Bottom Vignette */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-10"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(8, 13, 24, 0.5) 0%, transparent 12%, transparent 88%, rgba(8, 13, 24, 0.6) 100%)",
-            }}
-          />
+            {/* Subtle Dark Gradient Overlay */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-20"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(5, 8, 17, 0.15) 0%, rgba(5, 8, 17, 0.02) 40%, rgba(5, 8, 17, 0.7) 85%, rgba(5, 8, 17, 0.92) 100%)",
+              }}
+            />
 
-          {/* Cinematic Blend Layer 3: Soft Right Edge Falloff */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 hidden lg:block"
-            style={{
-              background:
-                "linear-gradient(270deg, #080d18 0%, transparent 100%)",
-            }}
-          />
+            {/* Top-Right Quick Action Button */}
+            {isHealthcare ? (
+              <button
+                type="button"
+                onClick={() => onOpenLightbox(project.previewImage)}
+                aria-label="Open full-resolution hardware prototype view"
+                className="absolute top-4 right-4 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-slate-950/80 text-white backdrop-blur-md transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 shadow-lg"
+              >
+                <FiMaximize2 className="text-sm" />
+              </button>
+            ) : (
+              <Link
+                to={project.detailsPath}
+                aria-label={`View details for ${project.title}`}
+                className="absolute top-4 right-4 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-slate-950/80 text-white backdrop-blur-md transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-500 hover:text-slate-950 shadow-lg"
+              >
+                <FiArrowRight className="text-sm" />
+              </Link>
+            )}
+
+            {/* UI Information Layered DIRECTLY OVER THE IMAGE */}
+            <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center justify-end p-4 sm:p-5 text-center pointer-events-none">
+              {/* Floating Badge directly on image */}
+              <span className="mb-2 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-slate-950/90 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-cyan-300 shadow-xl backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                {project.shortCategory || project.category}
+              </span>
+
+              {/* Supporting Tech Line layered on image */}
+              <p className="max-w-md font-mono text-[11px] sm:text-xs font-medium text-slate-300/90 backdrop-blur-sm bg-slate-950/60 px-3.5 py-1 rounded-full border border-white/10 shadow-sm">
+                {isHealthcare
+                  ? "Embedded Systems · Sensors · IoT · Hardware Design · Monitoring"
+                  : "React · Node.js · Express.js · MongoDB"}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </motion.article>
@@ -196,6 +226,8 @@ const ProjectShowcaseCard = ({ project, index }) => {
  * Recruiter-focused showcase presenting practical software and hardware projects.
  */
 const Projects = () => {
+  const [lightboxImage, setLightboxImage] = useState(null);
+
   return (
     <section id="projects" className="relative py-20 sm:py-28 lg:py-32">
       <div className="container-px mx-auto max-w-[1240px]">
@@ -212,10 +244,48 @@ const Projects = () => {
               key={project.id}
               project={project}
               index={index}
+              onOpenLightbox={(img) => setLightboxImage(img)}
             />
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal for Smart Healthcare Prototype */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 p-4 backdrop-blur-md"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[95vh] max-w-4xl overflow-hidden rounded-2xl border border-white/20 bg-slate-900 p-4 shadow-2xl"
+            >
+              <button
+                type="button"
+                aria-label="Close image preview"
+                onClick={() => setLightboxImage(null)}
+                className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/80 text-white transition-colors hover:bg-cyan-500 hover:text-slate-950"
+              >
+                <FiX className="text-xl" />
+              </button>
+
+              <img
+                src={lightboxImage}
+                alt="Smart Healthcare Hardware System prototype collage"
+                className="max-h-[80vh] w-auto rounded-xl object-contain mx-auto"
+              />
+
+              <p className="mt-3 text-center text-xs sm:text-sm font-medium text-slate-300">
+                Smart Healthcare Hardware System — Real Prototype 4-View Collage
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
