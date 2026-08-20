@@ -11,10 +11,12 @@ import {
   FiMail,
   FiSend,
   FiMoon,
+  FiSun,
 } from "react-icons/fi";
 import { HiMenu, HiX } from "react-icons/hi";
 import { navLinks } from "../../data/resumeData";
 import useActiveSection from "../../hooks/useActiveSection";
+import useTheme from "../../hooks/useTheme";
 
 const sectionIcons = {
   home: FiHome,
@@ -34,7 +36,7 @@ const sectionIds = navLinks.map((link) =>
  * Navbar
  * Futuristic Floating Glass Command Bar.
  * Matches the reference design with rounded rectangular glass container,
- * glowing cyan/purple border, icon-enhanced navigation, theme button, and "LET'S TALK" CTA.
+ * glowing cyan/purple border, icon-enhanced navigation, functional theme toggle button, and "LET'S TALK" CTA.
  */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -43,6 +45,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
   const activeId = useActiveSection(sectionIds);
+  const { toggleTheme, isDark } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -141,7 +144,7 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Desktop CTA & Theme Controls */}
+        {/* Desktop CTA & Functional Theme Controls */}
         <div className="hidden md:flex items-center gap-2 sm:gap-2.5">
           <a
             href="/#contact"
@@ -152,13 +155,19 @@ const Navbar = () => {
             <FiSend className="text-xs" />
           </a>
 
-          {/* Theme Button (Decorative Moon Accent) */}
+          {/* Functional Theme Toggle Button */}
           <button
             type="button"
-            aria-label="Theme mode"
-            className="flex h-8.5 w-8.5 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition-all duration-200 hover:border-cyan-400/50 hover:text-cyan-300 hover:bg-white/[0.08]"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+            title={`Switch to ${isDark ? "light" : "dark"} mode`}
+            className="flex h-8.5 w-8.5 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-300 transition-all duration-200 hover:border-cyan-400/50 hover:text-cyan-300 hover:bg-white/[0.08] cursor-pointer"
           >
-            <FiMoon className="text-xs" />
+            {isDark ? (
+              <FiMoon className="text-xs transition-transform duration-200 hover:rotate-12" />
+            ) : (
+              <FiSun className="text-xs text-amber-400 transition-transform duration-200 hover:rotate-45" />
+            )}
           </button>
         </div>
 
@@ -212,11 +221,25 @@ const Navbar = () => {
                   </li>
                 );
               })}
-              <li className="pt-2">
+              {/* Mobile Drawer Theme Toggle & Contact Action */}
+              <li className="pt-2 mt-1 border-t border-white/10 flex items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+                  className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-mono text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-white"
+                >
+                  {isDark ? (
+                    <FiMoon className="text-sm text-cyan-300" />
+                  ) : (
+                    <FiSun className="text-sm text-amber-400" />
+                  )}
+                  <span>{isDark ? "Dark" : "Light"}</span>
+                </button>
                 <a
                   href="/#contact"
                   onClick={(e) => handleNavClick(e, "/#contact")}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wider text-slate-950 shadow-md"
+                  className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-4 py-2 text-center text-xs font-bold uppercase tracking-wider text-slate-950 shadow-md"
                 >
                   <span>Contact Me</span>
                   <FiSend className="text-xs" />

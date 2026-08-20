@@ -42,6 +42,25 @@
   --shadow-glow-purple: 0 0 35px -8px rgba(168, 85, 247, 0.45);
 }
 
+/* Light Theme Variable Overrides */
+:root[data-theme="light"],
+html.light {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-card: rgba(255, 255, 255, 0.92);
+  --color-card-hover: rgba(248, 250, 252, 0.98);
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-border-hover: rgba(0, 240, 255, 0.6);
+
+  --color-text: #0f172a;
+  --color-text-secondary: #1e293b;
+  --color-text-muted: #475569;
+  --color-text-dim: #64748b;
+
+  --shadow-soft: 0 20px 50px -15px rgba(0, 0, 0, 0.08);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -61,6 +80,7 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
@@ -73,7 +93,7 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #030712;
+    background: var(--color-bg);
   }
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #00f0ff, #a855f7);
