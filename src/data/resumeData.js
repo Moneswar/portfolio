@@ -177,13 +177,17 @@ export const certifications = [
   {
     id: "cert-1",
     title: "NPTEL Online Certification",
+    course: "Database Management System",
+    provider: "NPTEL / IIT Kharagpur",
     issuer: "NPTEL (National Programme on Technology Enhanced Learning)",
     year: "2024",
     credentialUrl: null,
   },
   {
     id: "cert-2",
-    title: "Oracle Certification",
+    title: "Oracle Java Foundations Certification",
+    course: "Java Foundations",
+    provider: "Oracle",
     issuer: "Oracle",
     year: "2024",
     credentialUrl: null,
