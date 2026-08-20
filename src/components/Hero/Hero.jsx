@@ -89,11 +89,11 @@ const skillModules = [
     bgClass: "bg-[#05111b]/92 hover:bg-[#081a29]",
     textClass: "text-emerald-300",
     glowColor: "rgba(0, 255, 157, 0.45)",
-    desktopPos: "top-[-1.25rem] right-[8%] xl:right-[12%]",
-    path: "M 345 155 L 415 75",
-    nodeCoord: { cx: 415, cy: 75 },
+    desktopPos: "top-[-1rem] left-1/2 -translate-x-1/2",
+    path: "M 230 135 L 230 55",
+    nodeCoord: { cx: 230, cy: 55 },
     floatAnimation: {
-      y: [0, -5, 0],
+      y: [0, -4, 0],
       transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0 },
     },
   },
@@ -108,11 +108,11 @@ const skillModules = [
     bgClass: "bg-[#041220]/92 hover:bg-[#071c32]",
     textClass: "text-cyan-300",
     glowColor: "rgba(0, 240, 255, 0.45)",
-    desktopPos: "top-[42%] -left-[2.25rem] xl:-left-[3rem]",
-    path: "M 130 270 L 45 270",
-    nodeCoord: { cx: 45, cy: 270 },
+    desktopPos: "top-[40%] -left-[1.75rem] xl:-left-[2.25rem]",
+    path: "M 115 230 L 40 230",
+    nodeCoord: { cx: 40, cy: 230 },
     floatAnimation: {
-      y: [0, 5, 0],
+      y: [0, 4, 0],
       transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
     },
   },
@@ -127,11 +127,11 @@ const skillModules = [
     bgClass: "bg-[#041124]/92 hover:bg-[#071b38]",
     textClass: "text-sky-300",
     glowColor: "rgba(56, 189, 248, 0.45)",
-    desktopPos: "top-[42%] -right-[2.25rem] xl:-right-[3rem]",
-    path: "M 410 270 L 495 270",
-    nodeCoord: { cx: 495, cy: 270 },
+    desktopPos: "top-[40%] -right-[1.75rem] xl:-right-[2.25rem]",
+    path: "M 345 230 L 420 230",
+    nodeCoord: { cx: 420, cy: 230 },
     floatAnimation: {
-      y: [0, -5, 0],
+      y: [0, -4, 0],
       transition: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
     },
   },
@@ -146,11 +146,11 @@ const skillModules = [
     bgClass: "bg-[#0c0822]/92 hover:bg-[#150d3c]",
     textClass: "text-purple-300",
     glowColor: "rgba(168, 85, 247, 0.45)",
-    desktopPos: "bottom-[2%] left-[2%] xl:left-[5%]",
-    path: "M 185 385 L 95 455",
-    nodeCoord: { cx: 95, cy: 455 },
+    desktopPos: "bottom-[0%] left-[2%] xl:left-[5%]",
+    path: "M 155 330 L 80 395",
+    nodeCoord: { cx: 80, cy: 395 },
     floatAnimation: {
-      y: [0, 5, 0],
+      y: [0, 4, 0],
       transition: { duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
     },
   },
@@ -165,11 +165,11 @@ const skillModules = [
     bgClass: "bg-[#18071a]/92 hover:bg-[#270c2b]",
     textClass: "text-pink-300",
     glowColor: "rgba(236, 72, 153, 0.45)",
-    desktopPos: "bottom-[2%] right-[2%] xl:right-[5%]",
-    path: "M 355 385 L 445 455",
-    nodeCoord: { cx: 445, cy: 455 },
+    desktopPos: "bottom-[0%] right-[2%] xl:right-[5%]",
+    path: "M 305 330 L 380 395",
+    nodeCoord: { cx: 380, cy: 395 },
     floatAnimation: {
-      y: [0, -5, 0],
+      y: [0, -4, 0],
       transition: { duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 2 },
     },
   },
@@ -177,20 +177,19 @@ const skillModules = [
 
 // Floating Supporting Tech Badges
 const techBadges = [
-  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[15%] left-[6%]" },
-  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[15%] right-[6%]" },
-  { icon: SiJavascript, name: "JavaScript", color: "#f59e0b", pos: "bottom-[22%] left-[2%]" },
-  { icon: SiMongodb, name: "MongoDB", color: "#22c55e", pos: "bottom-[22%] right-[2%]" },
-  { icon: FaGitAlt, name: "Git", color: "#f97316", pos: "top-[4%] left-[28%]" },
-  { icon: SiCplusplus, name: "C++", color: "#3b82f6", pos: "bottom-[6%] left-[45%]" },
+  { icon: FaReact, name: "React", color: "#00f0ff", pos: "top-[14%] left-[6%]" },
+  { icon: FaNodeJs, name: "Node.js", color: "#10b981", pos: "top-[14%] right-[6%]" },
+  { icon: SiJavascript, name: "JavaScript", color: "#f59e0b", pos: "bottom-[24%] left-[2%]" },
+  { icon: SiMongodb, name: "MongoDB", color: "#22c55e", pos: "bottom-[24%] right-[2%]" },
+  { icon: FaGitAlt, name: "Git", color: "#f97316", pos: "top-[5%] left-[26%]" },
+  { icon: SiCplusplus, name: "C++", color: "#3b82f6", pos: "bottom-[5%] left-[45%]" },
 ];
 
 /**
  * Hero
- * Futuristic Engineering Ecosystem & Holographic HUD Showcase.
- * Rebuilt to match the approved reference design with clean 48/52 desktop grid balance,
- * large circular holographic profile core, 5 interconnected skill modules, floating tech icons,
- * 4 real factual metric cards, and verified career highlights.
+ * Futuristic Engineering Command Ecosystem & Holographic HUD Showcase.
+ * Perfectly balanced 48/52 desktop grid, zero viewport clipping, proper navbar offset,
+ * compact factual metric cards, and verified career highlights.
  */
 const Hero = () => {
   const typedRole = useTypewriter(roles, { pause: 1600 });
@@ -199,39 +198,39 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-[96vh] items-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-24"
+      className="relative flex min-h-[calc(100vh-4.5rem)] items-center overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-24 lg:pb-12"
     >
       <AnimatedBackground />
 
       <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-12 xl:px-16 relative z-10">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[48fr_52fr] lg:gap-10 xl:gap-14">
-          {/* Left Column: Headline, Chips, Bio, Info Cards, Buttons & Socials */}
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[48fr_52fr] lg:gap-8 xl:gap-12">
+          {/* Left Column (48%): Headline, Chips, Bio, Info Cards, Buttons & Socials */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
             className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             {/* Opportunity Status Pill */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-4 py-1.5 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-cyan-300 backdrop-blur-md shadow-md shadow-cyan-500/10"
+              transition={{ duration: 0.4, delay: 0.05 }}
+              className="mb-3.5 inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3.5 py-1 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-cyan-300 backdrop-blur-md shadow-sm"
             >
-              <span className="relative flex h-2.5 w-2.5">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
               </span>
               OPEN TO INTERNSHIPS &amp; JOB OPPORTUNITIES
             </motion.div>
 
             {/* Main Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-extrabold leading-[1.1] text-white"
+              transition={{ duration: 0.55, delay: 0.1 }}
+              className="font-display text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3rem] xl:text-[3.45rem] font-extrabold leading-[1.08] text-white"
             >
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 bg-clip-text text-transparent">
@@ -251,35 +250,35 @@ const Hero = () => {
 
             {/* Degree & Animated Role Line */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-sm sm:text-base font-mono font-medium text-slate-300"
+              transition={{ duration: 0.45, delay: 0.18 }}
+              className="mt-2.5 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm font-mono font-medium text-slate-300"
             >
               <span className="inline-flex items-center gap-1.5 text-cyan-300 font-semibold">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 BE Computer Science and Design
               </span>
               <span className="hidden sm:inline text-slate-500">•</span>
-              <div className="flex items-center">
-                <span>{typedRole}</span>
-                <span className="ml-1 inline-block h-4 w-[2px] bg-cyan-400 animate-pulse" />
+              <div className="flex items-center min-w-[180px]">
+                <span className="text-slate-200">{typedRole}</span>
+                <span className="ml-1 inline-block h-3.5 w-[2px] bg-cyan-400 animate-pulse" />
               </div>
             </motion.div>
 
             {/* Role Chips */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-3.5 flex flex-wrap items-center justify-center gap-2 lg:justify-start"
+              transition={{ duration: 0.45, delay: 0.24 }}
+              className="mt-2.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 lg:justify-start"
             >
               {roleChips.map((chip) => {
                 const Icon = chip.icon;
                 return (
                   <span
                     key={chip.label}
-                    className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 font-mono text-[11px] font-medium backdrop-blur-md transition-all duration-300 hover:scale-105 ${chip.color}`}
+                    className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-0.5 font-mono text-[10.5px] sm:text-[11px] font-medium backdrop-blur-md transition-all duration-300 hover:scale-105 ${chip.color}`}
                   >
                     <Icon className="text-xs" />
                     {chip.label}
@@ -290,33 +289,33 @@ const Hero = () => {
 
             {/* Concise Description */}
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              className="mt-5 max-w-[600px] text-sm sm:text-base leading-relaxed text-slate-300/90 sm:text-lg"
+              transition={{ duration: 0.45, delay: 0.3 }}
+              className="mt-3.5 max-w-[580px] text-xs sm:text-sm leading-relaxed text-slate-300/90"
             >
               {personalInfo.supportingText}
             </motion.p>
 
-            {/* 4 Compact Real Info Cards */}
+            {/* 4 Compact Real Info Cards (Single Row on Desktop) */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-[600px]"
+              transition={{ duration: 0.45, delay: 0.36 }}
+              className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-[580px]"
             >
               {infoCards.map((card) => {
                 const Icon = card.icon;
                 return (
                   <div
                     key={card.value}
-                    className={`flex flex-col items-start rounded-xl border p-2.5 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 ${card.color}`}
+                    className={`flex flex-col items-start rounded-xl border p-2 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-105 ${card.color}`}
                   >
-                    <Icon className="text-base mb-1" />
-                    <span className="font-display text-xs font-bold text-white whitespace-nowrap">
+                    <Icon className="text-sm mb-0.5" />
+                    <span className="font-display text-[11px] sm:text-xs font-bold text-white whitespace-nowrap">
                       {card.value}
                     </span>
-                    <span className="font-mono text-[9px] text-slate-300/80 truncate w-full">
+                    <span className="font-mono text-[8.5px] sm:text-[9px] text-slate-300/80 truncate w-full">
                       {card.label}
                     </span>
                   </div>
@@ -326,34 +325,34 @@ const Hero = () => {
 
             {/* Action Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="mt-8 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 lg:justify-start"
+              transition={{ duration: 0.45, delay: 0.42 }}
+              className="mt-5 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 lg:justify-start"
             >
               {/* Primary: View My Work */}
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 px-6 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/45 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 px-5 py-2.5 text-xs sm:text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/45 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
               >
-                <FiEye className="text-base" /> View My Work <FiArrowRight className="text-sm" />
+                <FiEye className="text-sm" /> View My Work <FiArrowRight className="text-xs" />
               </a>
 
               {/* Secondary: Download Resume */}
               <a
                 href={personalInfo.resumeFile}
                 download="Moneswar_Sundareswaran_Resume.pdf"
-                className="inline-flex items-center gap-2.5 rounded-full border border-cyan-500/30 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white shadow-sm backdrop-blur-md transition-all duration-300 hover:border-cyan-400/60 hover:bg-white/[0.08] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
+                className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-white/[0.04] px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm backdrop-blur-md transition-all duration-300 hover:border-cyan-400/60 hover:bg-white/[0.08] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
               >
-                <FiDownload className="text-base text-cyan-400" /> Download Resume
+                <FiDownload className="text-sm text-cyan-400" /> Download Resume
               </a>
 
               {/* Tertiary: Contact Me */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2.5 rounded-full border border-purple-500/30 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-slate-200 backdrop-blur-md transition-all duration-300 hover:border-purple-400/60 hover:bg-white/[0.07] hover:text-white hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
+                className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-white/[0.03] px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-200 backdrop-blur-md transition-all duration-300 hover:border-purple-400/60 hover:bg-white/[0.07] hover:text-white hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-cyan-400"
               >
-                <HiOutlineMail className="text-base text-purple-400" /> Contact Me <FiArrowRight className="text-sm" />
+                <HiOutlineMail className="text-sm text-purple-400" /> Contact Me <FiArrowRight className="text-xs" />
               </a>
             </motion.div>
 
@@ -361,8 +360,8 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.55 }}
-              className="mt-7 flex items-center justify-center gap-3.5 lg:justify-start"
+              transition={{ duration: 0.45, delay: 0.48 }}
+              className="mt-4 flex items-center justify-center gap-3 lg:justify-start"
             >
               {[
                 {
@@ -387,7 +386,7 @@ const Hero = () => {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-lg text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/60 hover:bg-white/[0.08] hover:text-cyan-300 shadow-sm"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-base text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400/60 hover:bg-white/[0.08] hover:text-cyan-300 shadow-sm"
                 >
                   <Icon />
                 </a>
@@ -399,41 +398,41 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[540px] lg:max-w-none"
+            transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
+            className="relative mx-auto flex flex-col items-center justify-center w-full max-w-[460px] lg:max-w-none"
           >
             {/* Central Engineering Command HUD Container */}
-            <div className="relative flex items-center justify-center h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] lg:h-[490px] lg:w-[490px] xl:h-[540px] xl:w-[540px]">
+            <div className="relative flex items-center justify-center h-[340px] w-[340px] sm:h-[390px] sm:w-[390px] lg:h-[430px] lg:w-[430px] xl:h-[460px] xl:w-[460px]">
               {/* SVG HUD Circuit Architecture & Radial Orbit Track Lines (Desktop Only) */}
               <svg
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 hidden lg:block h-full w-full"
-                viewBox="0 0 540 540"
+                viewBox="0 0 460 460"
                 fill="none"
               >
                 {/* Concentric Rotating HUD Orbit Rings */}
                 <circle
-                  cx="270"
-                  cy="270"
-                  r="160"
+                  cx="230"
+                  cy="230"
+                  r="135"
                   stroke="rgba(0, 240, 255, 0.22)"
                   strokeWidth="1.2"
                   strokeDasharray="6 8"
                   className="animate-hud-spin"
                 />
                 <circle
-                  cx="270"
-                  cy="270"
-                  r="215"
+                  cx="230"
+                  cy="230"
+                  r="180"
                   stroke="rgba(168, 85, 247, 0.18)"
                   strokeWidth="1"
                   strokeDasharray="4 12"
                   className="animate-hud-spin-reverse"
                 />
                 <circle
-                  cx="270"
-                  cy="270"
-                  r="255"
+                  cx="230"
+                  cy="230"
+                  r="215"
                   stroke="rgba(56, 189, 248, 0.12)"
                   strokeWidth="1"
                   strokeDasharray="2 10"
@@ -441,34 +440,34 @@ const Hero = () => {
 
                 {/* HUD Cardinal Axis Crosshairs */}
                 <line
-                  x1="270"
-                  y1="35"
-                  x2="270"
-                  y2="65"
+                  x1="230"
+                  y1="25"
+                  x2="230"
+                  y2="55"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="270"
-                  y1="475"
-                  x2="270"
-                  y2="505"
+                  x1="230"
+                  y1="405"
+                  x2="230"
+                  y2="435"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="35"
-                  y1="270"
-                  x2="65"
-                  y2="270"
+                  x1="25"
+                  y1="230"
+                  x2="55"
+                  y2="230"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
                 <line
-                  x1="475"
-                  y1="270"
-                  x2="505"
-                  y2="270"
+                  x1="405"
+                  y1="230"
+                  x2="435"
+                  y2="230"
                   stroke="rgba(0, 240, 255, 0.4)"
                   strokeWidth="1.5"
                 />
@@ -490,7 +489,7 @@ const Hero = () => {
                       <circle
                         cx={mod.nodeCoord.cx}
                         cy={mod.nodeCoord.cy}
-                        r={isHovered ? "4.5" : "3"}
+                        r={isHovered ? "4" : "2.8"}
                         fill={mod.color}
                         className="transition-all duration-300"
                       />
@@ -498,7 +497,7 @@ const Hero = () => {
                       <circle
                         cx={mod.nodeCoord.cx}
                         cy={mod.nodeCoord.cy}
-                        r={isHovered ? "9" : "5.5"}
+                        r={isHovered ? "8" : "5"}
                         stroke={mod.color}
                         strokeWidth="1"
                         strokeOpacity={isHovered ? "0.85" : "0.4"}
@@ -524,7 +523,7 @@ const Hero = () => {
                     <motion.div
                       key={badge.name}
                       animate={{
-                        y: idx % 2 === 0 ? [0, -6, 0] : [0, 6, 0],
+                        y: idx % 2 === 0 ? [0, -5, 0] : [0, 5, 0],
                         opacity: [0.65, 0.95, 0.65],
                       }}
                       transition={{
@@ -533,10 +532,10 @@ const Hero = () => {
                         ease: "easeInOut",
                         delay: idx * 0.3,
                       }}
-                      className={`absolute ${badge.pos} z-10 flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-[#070d1e]/80 shadow-md backdrop-blur-md`}
+                      className={`absolute ${badge.pos} z-10 flex h-6.5 w-6.5 items-center justify-center rounded-full border border-white/10 bg-[#070d1e]/85 shadow-sm backdrop-blur-md`}
                       style={{ color: badge.color }}
                     >
-                      <Icon className="text-xs" />
+                      <Icon className="text-[11px]" />
                     </motion.div>
                   );
                 })}
@@ -544,12 +543,12 @@ const Hero = () => {
 
               {/* Central Large Circular Profile Core */}
               <motion.div
-                animate={{ y: [0, -6, 0] }}
+                animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-20 group"
               >
                 {/* Outer Circular Neon Shield Frame */}
-                <div className="relative h-56 w-56 sm:h-64 sm:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80 rounded-full p-1.5 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_45px_-10px_rgba(0,240,255,0.4)] transition-all duration-500 group-hover:shadow-[0_0_65px_-5px_rgba(0,240,255,0.6)]">
+                <div className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-60 lg:w-60 xl:h-68 xl:w-68 rounded-full p-1 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 shadow-[0_0_40px_-8px_rgba(0,240,255,0.4)] transition-all duration-500 group-hover:shadow-[0_0_55px_-5px_rgba(0,240,255,0.6)]">
                   {/* Inner Circular Canvas */}
                   <div className="relative h-full w-full overflow-hidden rounded-full bg-[#050914]">
                     <img
@@ -559,22 +558,22 @@ const Hero = () => {
                       loading="eager"
                     />
                     {/* Subtle Holographic Scanline Overlay */}
-                    <div className="scanline-overlay absolute inset-0 pointer-events-none opacity-40" />
+                    <div className="scanline-overlay absolute inset-0 pointer-events-none opacity-35" />
 
                     {/* Top HUD Status Tag */}
-                    <div className="absolute top-3 inset-x-4 flex items-center justify-between pointer-events-none">
-                      <span className="font-mono text-[8px] sm:text-[9px] font-bold uppercase tracking-wider text-cyan-300 bg-slate-950/85 px-2 py-0.5 rounded-full border border-cyan-500/30 backdrop-blur-md">
+                    <div className="absolute top-2.5 inset-x-3 flex items-center justify-between pointer-events-none">
+                      <span className="font-mono text-[8px] font-bold uppercase tracking-wider text-cyan-300 bg-slate-950/85 px-1.5 py-0.5 rounded-full border border-cyan-500/30 backdrop-blur-md">
                         SYS_CORE // MS-01
                       </span>
-                      <span className="flex items-center gap-1 font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 bg-slate-950/85 px-2 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur-md">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="flex items-center gap-1 font-mono text-[8px] font-bold text-emerald-400 bg-slate-950/85 px-1.5 py-0.5 rounded-full border border-emerald-500/30 backdrop-blur-md">
+                        <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" />
                         ONLINE
                       </span>
                     </div>
 
                     {/* Bottom HUD Tag */}
-                    <div className="absolute bottom-3 inset-x-0 flex justify-center pointer-events-none">
-                      <span className="font-mono text-[9px] font-bold text-slate-300 bg-slate-950/85 px-3 py-0.5 rounded-full border border-white/15 backdrop-blur-md">
+                    <div className="absolute bottom-2.5 inset-x-0 flex justify-center pointer-events-none">
+                      <span className="font-mono text-[8.5px] font-bold text-slate-300 bg-slate-950/85 px-2.5 py-0.5 rounded-full border border-white/15 backdrop-blur-md">
                         CSD // 2027
                       </span>
                     </div>
@@ -597,22 +596,22 @@ const Hero = () => {
                       onMouseLeave={() => setActiveModule(null)}
                     >
                       <div
-                        className={`group relative flex items-center gap-3 rounded-2xl border px-3.5 py-2.5 backdrop-blur-xl transition-all duration-300 cursor-pointer shadow-lg ${
+                        className={`group relative flex items-center gap-2.5 rounded-2xl border px-3 py-2 backdrop-blur-xl transition-all duration-300 cursor-pointer shadow-md ${
                           mod.borderClass
                         } ${mod.bgClass} ${
                           isHovered
-                            ? "scale-105 bg-[#060e1c]/95 shadow-2xl"
+                            ? "scale-105 bg-[#060e1c]/95 shadow-xl"
                             : "bg-[#060e1c]/88"
                         }`}
                         style={{
                           boxShadow: isHovered
-                            ? `0 0 26px ${mod.glowColor}`
+                            ? `0 0 22px ${mod.glowColor}`
                             : undefined,
                         }}
                       >
                         {/* Module Icon Pod */}
                         <span
-                          className={`flex h-8 w-8 items-center justify-center rounded-xl bg-white/[0.08] ${mod.textClass} text-lg shrink-0 border border-white/10`}
+                          className={`flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.08] ${mod.textClass} text-base shrink-0 border border-white/10`}
                         >
                           <Icon />
                         </span>
@@ -620,18 +619,18 @@ const Hero = () => {
                         {/* Module Metadata */}
                         <div className="flex flex-col text-left pr-1">
                           <div className="flex items-center gap-1.5">
-                            <span className="font-mono text-[9px] font-semibold text-slate-400 uppercase tracking-wider">
+                            <span className="font-mono text-[8.5px] font-semibold text-slate-400 uppercase tracking-wider">
                               {mod.tag}
                             </span>
                             <span
-                              className="h-1.5 w-1.5 rounded-full"
+                              className="h-1 w-1 rounded-full"
                               style={{ backgroundColor: mod.color }}
                             />
                           </div>
-                          <span className="font-display text-xs font-bold text-white whitespace-nowrap leading-tight">
+                          <span className="font-display text-[11.5px] font-bold text-white whitespace-nowrap leading-tight">
                             {mod.title}
                           </span>
-                          <span className="text-[10px] font-mono text-slate-300/80 whitespace-nowrap leading-tight">
+                          <span className="text-[9px] font-mono text-slate-300/80 whitespace-nowrap leading-tight">
                             {mod.subtitle}
                           </span>
                         </div>
@@ -643,21 +642,21 @@ const Hero = () => {
             </div>
 
             {/* Mobile & Tablet Compact HUD Skill Deck (< lg) */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full lg:hidden">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 w-full lg:hidden">
               {skillModules.map((mod) => {
                 const Icon = mod.icon;
                 return (
                   <div
                     key={mod.id}
-                    className={`flex items-center gap-3 rounded-xl border p-2.5 backdrop-blur-lg bg-[#060e1c]/90 shadow-md ${mod.borderClass}`}
+                    className={`flex items-center gap-2.5 rounded-xl border p-2 backdrop-blur-lg bg-[#060e1c]/90 shadow-sm ${mod.borderClass}`}
                   >
                     <span
-                      className={`flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.08] ${mod.textClass} text-base shrink-0 border border-white/10`}
+                      className={`flex h-6.5 w-6.5 items-center justify-center rounded-lg bg-white/[0.08] ${mod.textClass} text-sm shrink-0 border border-white/10`}
                     >
                       <Icon />
                     </span>
                     <div className="flex flex-col text-left overflow-hidden">
-                      <span className="font-mono text-[9px] text-slate-400 uppercase tracking-wider">
+                      <span className="font-mono text-[8.5px] text-slate-400 uppercase tracking-wider">
                         {mod.tag}
                       </span>
                       <span className="font-display text-xs font-bold text-white truncate">
@@ -676,23 +675,23 @@ const Hero = () => {
       <motion.a
         href="#about"
         aria-label="Scroll down to About section"
-        animate={{ y: [0, 6, 0] }}
+        animate={{ y: [0, 5, 0] }}
         transition={{
           duration: 2,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-1 text-[11px] font-mono uppercase tracking-widest text-slate-400 transition-colors hover:text-cyan-300"
+        className="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-slate-400 transition-colors hover:text-cyan-300"
       >
         <span className="hidden sm:inline tracking-[0.2em]">SCROLL</span>
-        <div className="flex h-7 w-4.5 items-start justify-center rounded-full border border-cyan-500/40 p-1 bg-white/[0.02]">
+        <div className="flex h-6 w-4 items-start justify-center rounded-full border border-cyan-500/40 p-0.5 bg-white/[0.02]">
           <motion.span
-            animate={{ y: [0, 8, 0], opacity: [1, 0.2, 1] }}
+            animate={{ y: [0, 6, 0], opacity: [1, 0.2, 1] }}
             transition={{ duration: 1.6, repeat: Infinity }}
-            className="h-1.5 w-1 rounded-full bg-cyan-400"
+            className="h-1 w-1 rounded-full bg-cyan-400"
           />
         </div>
-        <FiArrowDown className="text-xs text-cyan-400" />
+        <FiArrowDown className="text-[11px] text-cyan-400" />
       </motion.a>
     </section>
   );
